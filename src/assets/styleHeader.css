@@ -1,0 +1,8 @@
+.header{
+    background-color: var(--color-black);
+    height: 10vh;
+}
+.header nav ul{
+    display: flex;
+    color: var(--color-white);    
+}
