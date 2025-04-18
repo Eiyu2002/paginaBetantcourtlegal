@@ -1,0 +1,283 @@
+.containerAboutPage {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.containerSection {
+  width: 100%;
+
+  height: 90%;
+  display: flex;
+}
+
+.containerImgs {
+  width: 50%;
+  height: 100%;
+  position: relative;
+}
+.containerTextAbout {
+  width: 50%;
+  height: 82%;
+  position: relative;
+  margin-top: 14vh;
+  display: flex;
+  flex-direction: column;
+}
+.containerTextAbout2 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.textAbout1 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-orange);
+  font-size: 1.4em;
+  position: relative;
+}
+.textAbout2 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-black);
+  margin-top: 2vh;
+  width: 90%;
+  font-size: 2.5em;
+  font-weight: 700;
+  position: relative;
+}
+.textAbout1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.5em;
+  border-bottom: 0.14em solid var(--color-orange);
+  bottom: 0.6em;
+  left: 5.5em;
+}
+.textAbout1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 2em;
+  border-bottom: 0.14em solid var(--color-black);
+  bottom: 0.3em;
+  left: 5.5em;
+}
+
+.textAbout3 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-black);
+  text-align: left;
+  width: 90%;
+  margin-top: 2vh;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-left: 0;
+}
+.img0 {
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/pattern-2.png");
+  width: 40%;
+  height: 55%;
+  position: absolute;
+  top: 6em;
+  left: 5em;
+}
+
+.img1 {
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/about.jpg");
+  width: 60%;
+  height: 80%;
+  position: absolute;
+  top: 7em;
+  left: 6em;
+}
+
+.img2 {
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/about-1.jpg");
+  width: 35%;
+  height: 32%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: solid 0.6em var(--color-white);
+  position: absolute;
+  bottom: -2em;
+  right: 6em;
+}
+
+.img3 {
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/law.png");
+  width: 60%;
+  height: 50%;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  bottom: -3em;
+  left: 3em;
+}
+.containerTextAbout3 {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  margin-top: 2vh;
+}
+
+.containerSpeechBubble {
+  height: 100%;
+  width: 45%;
+}
+
+.speechBubble {
+  position: relative;
+  background: var(--color-orange); /* Color mostaza */
+  color: white;
+  padding: 15px 20px;
+  height: 40%;
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-style: italic;
+  width: 70%;
+  max-width: 300px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif;
+}
+
+.speechBubble > h1 {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.speechBubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+
+  border-top: 15px solid var(--color-orange);
+}
+
+.speechBubble::before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 18px;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.containerImg4 {
+  width: 100%;
+  height: 30%;
+  margin-top: 1em;
+  display: flex;
+  position: relative;
+}
+
+.img4 {
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/author-1.jpg");
+  background-position: center;
+  margin-left: 1em;
+  background-size: contain;
+  clip-path: circle(50% at 50% 50%);
+  width: 20%;
+  height: 100%;
+}
+.img5 {
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/signature.png");
+  background-repeat: no-repeat;
+  margin-left: 1em;
+  background-size: contain;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 3em;
+  top: -0.5em;
+}
+
+.textAbout4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  width: 85%;
+  text-align: end;
+}
+
+.containerListAbout {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.containerListAbout > ul > li {
+  margin-bottom: 0.5em;
+}
+.containerListAbout > ul > li > i {
+  margin-right: 1em;
+  color: var(--color-orange);
+}
+.containerListAbout > ul {
+  margin-top: 2em;
+}
+
+.underlineAbout1 {
+  width: 90%;
+  border-bottom: solid 0.5em var(--color-black);
+  margin-top: 3em;
+  position: relative;
+}
+.underlineAbout2 {
+  position: absolute;
+  top: 0;
+
+  width: 70%;
+  border-bottom: solid 0.5em var(--color-orange);
+}
+
+.underlineAbout3 {
+  position: absolute;
+  top: -1em;
+  right: 8em;
+  background-color: var(--color-white);
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+
+  width: 10%;
+  height: 2em;
+  border: solid 0.2em var(--color-orange);
+}
+
+@media (min-width: 1400px) {
+  .containerTextAbout3 {
+    margin-top: 6em;
+  }
+  .textAbout3{
+    margin-top: 1em;
+    font-size: 1.2em;
+  }
+  .containerListAbout{
+    justify-content: center;
+    font-size: 1.3em;
+  }
+  .underlineAbout3{
+    right: 11em;
+  }
+
+}

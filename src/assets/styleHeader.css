@@ -1,8 +1,116 @@
-.header{
-    background-color: var(--color-black);
-    height: 10vh;
+.header {
+  background-color: var(--color-black);
+  height: 10vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.header nav ul{
-    display: flex;
-    color: var(--color-white);    
+.header > nav > ul {
+  display: flex;
+  height: 100%;
+  gap: 0.4em;
+  color: var(--color-white);
+}
+
+.header > nav {
+  margin-left: 3em;
+  height: 100%;
+}
+
+/* Estilos de los enlaces */
+.header > nav > ul > li > a,
+span {
+  padding: 0em 1em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.header > nav > ul > li {
+  position: relative;
+}
+
+.header > nav > ul > li > a:hover,
+span:hover {
+  background-color: var(--color-orange);
+}
+
+/* Estilos de los enlaces */
+
+/*Manejo del Dropdown*/
+.dropdown {
+  border-top: 0.5em solid var(--color-orange);
+  position: absolute;
+  z-index: 100;
+  background-color: var(--color-white);
+  width: 15em;
+  top: 100%;
+  left: 0;
+  height: 20em;
+}
+.dropdown > ul {
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+}
+
+.dropdown > ul > li {
+  display: flex;
+
+  justify-content: flex-start;
+  width: 100%;
+  height: 4em;
+  align-items: end;
+  color: var(--color-black);
+  font-weight: 500;
+  padding: 0;
+  
+
+  box-shadow: -2px 4px 5px -1px rgba(0, 0, 0, 0.09);
+}
+
+.dropdown > ul > li > a {
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+  height: 100%;
+  cursor: pointer;
+}
+
+.dropdown > ul > li > a:hover {
+  color: var(--color-orange);
+  margin-left: 2em;
+}
+
+/*Manejo del Dropdown*/
+
+/*Contenedor de iconos del header*/
+
+.containerIconsHeader {
+  margin-right: 2em;
+  color: var(--color-white);
+  height: 100%;
+  gap: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.containerIconsHeader > i {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.containerIconsHeader > i:hover {
+  color: var(--color-orange);
 }

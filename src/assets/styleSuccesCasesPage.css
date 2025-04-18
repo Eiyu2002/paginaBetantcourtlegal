@@ -1,0 +1,436 @@
+.containerSuccesCasesPage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerSuccesCases {
+  width: 100%;
+  height: 85%;
+  background-color: var(--color-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.containerSuccesCasesText1 {
+  width: 100%;
+  height: 16%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.succesCasesText1 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-orange);
+  font-size: 1.3em;
+  position: relative;
+}
+
+.succesCasesText1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.5em;
+  border-bottom: 0.14em solid var(--color-orange);
+  bottom: 0.6em;
+  left: 5.7em;
+}
+.succesCasesText1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 2em;
+  border-bottom: 0.14em solid var(--color-white);
+  bottom: 0.3em;
+  left: 5.7em;
+}
+
+.containerSuccesCasesText2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.succesCasesText2 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+  text-align: center;
+  margin-left: 1em;
+}
+
+.swiperSuccesCases {
+  width: 100%;
+  height: 70%;
+  margin-top: 1em;
+}
+
+.swiperSlideSuccesCases {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cardSuccesCases {
+  position: relative;
+  height: 100%;
+  width: 67%;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.elementSuccesCases {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  transform: rotate(10deg);
+  background-color: #3d3d3d;
+  width: 100%;
+  height: 100%;
+}
+
+.iconsSuccesCases {
+  width: 100px;
+  height: 100px;
+  background: var(--color-white);
+  border: solid 1px #3d3d3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.iconsSuccesCases > i {
+  font-size: 2em;
+}
+
+.titleSuccesCases {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+}
+
+.succesCasesText3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9em;
+  text-align: center;
+  width: 85%;
+  font-weight: 400;
+}
+
+.containerInfoService {
+  width: 70%;
+  height: 80%;
+  background-color: #3d3d3d;
+  position: relative;
+  overflow: hidden;
+  top: 0.5em;
+  right: 0.5em;
+}
+
+.elementcontainerInfoService {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+
+  top: -1em;
+  right: -1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.containerTitleInfoService{
+  position: absolute;
+  width: 22%;
+  height: 10%;
+  left: -0.7em;
+  overflow: hidden;
+  top: 3em;
+  background-color: var(--color-orange);
+}
+
+.containerTitleInfoService > h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  width: 100%;
+  height: 100%;
+  margin-left: 2em;
+  text-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+
+.containerTitleInfoService > h1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.1em;
+  border-bottom: 0.19em solid var(--color-black);
+  bottom: 1.2em;
+  left: 6.6em;
+}
+.containerTitleInfoService > h1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.4em;
+  border-bottom: 0.19em solid var(--color-white);
+  bottom: 0.9em;
+  left: 6.6em;
+}
+
+
+.containerTitleInfoService2{
+  position: absolute;
+  width: 38%;
+  height: 12%;
+  left: -0.7em;
+  top: 3em;
+  background-color: var(--color-orange);
+  overflow: hidden;
+}
+
+.containerTitleInfoService2 > h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  width: 100%;
+  height: 100%;
+  margin-left: 0.5em;
+  text-wrap: nowrap;
+
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+
+.containerTitleInfoService2 > h1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.2em;
+  border-bottom: 0.2em solid var(--color-black);
+  bottom: 1.4em;
+  right: 1.4em;
+}
+.containerTitleInfoService2 > h1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.7em;
+  border-bottom: 0.2em solid var(--color-white);
+  bottom: 1.1em;
+  right: 0.9em;
+}
+
+.containerTitleInfoService3{
+  position: absolute;
+  width: 22%;
+  height: 10%;
+  left: -0.7em;
+  top: 3em;
+  overflow: hidden;
+  background-color: var(--color-orange);
+}
+
+.containerTitleInfoService3 > h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  width: 100%;
+  height: 100%;
+  margin-left: 0.5em;
+  text-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+
+.containerTitleInfoService3 > h1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.1em;
+  border-bottom: 0.18em solid var(--color-black);
+  bottom: 1.2em;
+  left: 8.1em;
+}
+.containerTitleInfoService3 > h1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.6em;
+  border-bottom: 0.18em solid var(--color-white);
+  bottom: 0.9em;
+  left: 8.1em;
+}
+
+
+
+.containerTitleInfoService4{
+  position: absolute;
+  width: 25%;
+  height: 10%;
+  left: -0.7em;
+  overflow: hidden;
+  top: 3em;
+  background-color: var(--color-orange);
+}
+
+.containerTitleInfoService4 > h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  width: 100%;
+  text-wrap: nowrap;
+  height: 100%;
+  margin-left: 0.5em;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+
+.containerTitleInfoService4 > h1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.1em;
+  border-bottom: 0.18em solid var(--color-black);
+  bottom: 1.2em;
+  left: 10.1em;
+}
+.containerTitleInfoService4 > h1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.6em;
+  border-bottom: 0.18em solid var(--color-white);
+  bottom: 0.9em;
+  left: 10.1em;
+}
+
+
+.containerTitleInfoService5{
+  position: absolute;
+  width: 21%;
+  height: 10%;
+  left: -0.7em;
+  top: 3em;
+  overflow: hidden;
+  background-color: var(--color-orange);
+}
+
+.containerTitleInfoService5 > h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  width: 100%;
+  height: 100%;
+  margin-left: 1em;
+  text-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  position: relative;
+}
+
+
+.containerTitleInfoService5 > h1::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.1em;
+  border-bottom: 0.18em solid var(--color-black);
+  bottom: 1.2em;
+  left: 7.2em;
+}
+.containerTitleInfoService5 > h1::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.6em;
+  border-bottom: 0.18em solid var(--color-white);
+  bottom: 0.9em;
+  left: 7.2em;
+}
+
+
+.toBackService > h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--color-white);
+  transition: all 0.2s;
+}
+
+.toBackService{
+  cursor: pointer;
+  width: 11%;
+  height: 8%;
+  border-left: solid var(--color-orange) 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-black);
+  position: absolute;
+  bottom: 1em;
+  right: 2em;
+}
+
+.toBackService:hover > h1{
+  color: var(--color-orange);
+}
+
+
+.containerListService{
+  width: 40%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 2em;
+
+}
+
+.containerListService > ol > li > h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: var(--color-black);
+  display: inline-block;
+  margin-left: 1em;
+  transition: all 0.2s;
+  text-wrap: nowrap;
+}
+
+.containerListService > ol > li{
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.containerListService > ol > li:hover > h1{
+  color: var(--color-orange);
+}
+
+.containerListService > ol > li > i{
+  color: var(--color-orange);
+}
+
+.containerListService > ol > li {
+  margin-top: 1em;
+}

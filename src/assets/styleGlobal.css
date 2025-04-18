@@ -1,18 +1,53 @@
+@font-face {
+  font-family: "Motserrat";
+  src: url("../../public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --color-black: #222222;
   --color-orange: #cc8809;
   --color-white: #ffffff;
 }
-* {
+*{
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
 
-li{
+li {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
+}
+
+.buttonStyle {
+  color: var(--color-white);
+  background-color: var(--color-orange);
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+.buttonStyle:hover {
+  color: var(--color-orange);
+  background-color: var(--color-white);
+}
+
+
+.activeLink{
+  background-color: var(--color-orange);
 }

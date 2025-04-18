@@ -1,0 +1,154 @@
+.containerHero {
+  width: 100vw;
+  
+  height: 90vh;
+  margin-top: 10vh;
+  padding: 0;
+}
+.containerSlide {
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.containerTextSlide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: left;
+  gap: 1em;
+}
+
+.containerTextSlide > h1,
+p {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+  margin-left: 1em;
+  overflow: hidden;
+}
+
+.containerTextSlide > h1 {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.buttonHero {
+  width: 13%;
+  height: 8%;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-orange) !important;
+}
+
+.containerAnimate {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1em;
+}
+.containerTextSlide2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+.containerAnimate > h1,
+p,
+.containerAnimate2 > h1,
+p {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-white);
+
+  overflow: hidden;
+  text-align: center;
+}
+
+.containerAnimate > h1 {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.buttonHero2 {
+  width: 25%;
+  height: 13%;
+
+  margin-top: 1em;
+}
+
+.containerTextSlide3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerAnimate2 {
+  width: 55%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  overflow: hidden;
+}
+.containerAnimate2 > button{
+  width: 25%;
+  height: 10%;
+
+}
+
+.containerAnimate2 > p{
+  width: 80%;
+}
+
+.underline9 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.underline10 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.underline7, .underline8{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.underline11,
+.underline12 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.underline13,
+.underline14 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

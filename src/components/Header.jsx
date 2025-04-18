@@ -1,38 +1,165 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import { NavLink } from "react-router-dom";
-import "../assets/styleHeader.css"
+import { useContext } from "react";
+import { UserContext } from "../context/Context";
+
+import "../assets/styleHeader.css";
 
 function Header() {
+  const { activate1, setActivate1 } = useContext(UserContext);
+
+  const [bgColor, setBgColor] = useState("#");
+  const [bgColor1, setBgColor1] = useState("");
+  const [bgColor2, setBgColor2] = useState("#");
+
+  useEffect(() => {
+    const handleScroll = (element, set) => {
+      const section = document.querySelector(`#${element}`);
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight - 200;
+      const scrollY = window.scrollY;
+
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        set("#cc8809");
+      } else {
+        set("");
+      }
+    };
+    window.addEventListener("scroll", () => handleScroll("hero", setBgColor));
+
+    window.addEventListener("scroll", () =>
+      handleScroll("services", setBgColor1)
+    );
+    window.addEventListener("scroll", () => handleScroll("cases", setBgColor2));
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const [drop, setDrop] = useState(false);
+
+  const handleDrop = () => {
+    setDrop(!drop);
+  };
+
+  const handleActiveLink = (e) => {
+    document.querySelectorAll(".activeLink").forEach((element) => {
+      element.classList.remove("activeLink");
+    });
+
+    e.target.classList.add("activeLink");
+  };
+
   return (
     <>
       <header className="header">
         <nav>
           <ul>
             <li>
-              <NavLink to={"/homepage"}>Inicio</NavLink>
+              <NavLink
+                to={"/"}
+                onClick={() => {
+                  setBgColor("#cc8809");
+                  window.scrollTo({ top: 0 });
+                }}
+                style={{ backgroundColor: bgColor }}
+              >
+                Inicio
+              </NavLink>
             </li>
             <li>
-              <Link to="/us" smooth={true} duration={900}>
+              <Link
+                onClick={(e) => {
+                  handleActiveLink(e);
+                }}
+                to="us"
+                smooth={true}
+                duration={900}
+                spy={true}
+                activeClass="activeLink"
+              >
                 Nosotros
               </Link>
             </li>
-            <li>
-              <span>Servicios</span>
+            <li
+              onMouseEnter={() => handleDrop()}
+              onMouseLeave={() => handleDrop()}
+            >
+              <span style={{ backgroundColor: bgColor1 }}>Servicios ▼</span>
+
+              {drop && (
+                <div className="dropdown">
+                  <ul>
+                    <li>
+                      {" "}
+                      <Link onClick={() => setActivate1(3)} to={"services"}>
+                        Derecho Laboral
+                      </Link>
+                    </li>
+                    <li>
+                      {" "}
+                      <Link onClick={() => setActivate1(2)} to={"services"}>
+                        Derecho De Familia Y Matrimonial
+                      </Link>
+                    </li>
+                    <li>
+                      {" "}
+                      <Link onClick={() => setActivate1(5)} to={"services"}>
+                        Derecho Penal
+                      </Link>
+                    </li>
+                    <li>
+                      {" "}
+                      <Link onClick={() => setActivate1(4)} to={"services"}>
+                        Derecho Inmobiliario
+                      </Link>
+                    </li>
+                    <li>
+                      {" "}
+                      <Link onClick={() => setActivate1(1)} to={"services"}>
+                        Derecho Civil
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </li>
             <li>
-              <Link to="/cases" smooth={true} duration={900}>
+              <Link to="cases" style={{ backgroundColor: bgColor2 }}>
                 Casos de Exitos
               </Link>
             </li>
             <li>
-              <NavLink to={"/test"}>Testimonios</NavLink>
+              <NavLink
+                to={"/test"}
+                onClick={() => {
+                  setBgColor(""), setBgColor2("");
+                }}
+                className={({ isActive }) => (isActive ? "activeLink" : "")}
+              >
+                Testimonios
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/blogs"}>Blogs</NavLink>
+              <NavLink
+                to={"/blogs"}
+                className={({ isActive }) => (isActive ? "activeLink" : "")}
+              >
+                Blogs
+              </NavLink>
             </li>
           </ul>
         </nav>
+
+        <div className="containerIconsHeader">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-brands fa-facebook-f"></i>
+          <i className="fa-brands fa-twitter"></i>
+          <i className="fa-brands fa-linkedin-in"></i>
+          <i className="fa-brands fa-skype"></i>
+        </div>
       </header>
     </>
   );
