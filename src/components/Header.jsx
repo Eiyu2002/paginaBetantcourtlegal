@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../context/Context";
 
@@ -12,6 +12,26 @@ function Header() {
   const [bgColor, setBgColor] = useState("#");
   const [bgColor1, setBgColor1] = useState("");
   const [bgColor2, setBgColor2] = useState("#");
+  const [bgColor3, setBgColor3] = useState("#");
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleScrollToCases = (to) => {
+    if (location.pathname === "/") {
+      // Ya estás en la ruta, solo hace scroll
+      const section = document.getElementById(to);
+      if (to === "cases") {
+        section.scrollIntoView();
+      } else if (to === "us") {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // No estás en la ruta principal, redirige con estado
+
+      navigate("/", { state: { scrollTo: to } });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = (element, set) => {
@@ -32,6 +52,8 @@ function Header() {
       handleScroll("services", setBgColor1)
     );
     window.addEventListener("scroll", () => handleScroll("cases", setBgColor2));
+    window.addEventListener("scroll", () => handleScroll("us", setBgColor3));
+
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -71,14 +93,12 @@ function Header() {
             </li>
             <li>
               <Link
-                onClick={(e) => {
-                  handleActiveLink(e);
-                }}
+                onClick={() => handleScrollToCases("us")}
                 to="us"
                 smooth={true}
                 duration={900}
                 spy={true}
-                activeClass="activeLink"
+                style={{ backgroundColor: bgColor3 }}
               >
                 Nosotros
               </Link>
@@ -127,7 +147,10 @@ function Header() {
               )}
             </li>
             <li>
-              <Link to="cases" style={{ backgroundColor: bgColor2 }}>
+              <Link
+                onClick={() => handleScrollToCases("cases")}
+                style={{ backgroundColor: bgColor2 }}
+              >
                 Casos de Exitos
               </Link>
             </li>
@@ -135,7 +158,7 @@ function Header() {
               <NavLink
                 to={"/test"}
                 onClick={() => {
-                  setBgColor(""), setBgColor2("");
+                  setBgColor(""), setBgColor2(""); setBgColor3("");
                 }}
                 className={({ isActive }) => (isActive ? "activeLink" : "")}
               >
@@ -144,6 +167,9 @@ function Header() {
             </li>
             <li>
               <NavLink
+                onClick={() => {
+                  setBgColor(""), setBgColor2(""); setBgColor3("");
+                }}
                 to={"/blogs"}
                 className={({ isActive }) => (isActive ? "activeLink" : "")}
               >
