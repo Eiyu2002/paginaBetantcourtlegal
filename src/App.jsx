@@ -6,6 +6,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import ServicePage from "./pages/ServicePage.jsx";
 import SuccesCasesPage from "./pages/SuccesCasesPage.jsx";
 import TestimonialsPage from "./pages/TestimonialsPage.jsx";
+import BlogsPage from "./pages/BlogsPage.jsx";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route
           path="/test"
           element={<TestimonialsPage></TestimonialsPage>}
+        ></Route>
+        <Route
+          path="/blogs"
+          element={<BlogsPage></BlogsPage>}
         ></Route>
       </Routes>
     </BrowserRouter>

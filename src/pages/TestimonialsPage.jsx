@@ -1,51 +1,46 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "../assets/styleTestimonialPage.css";
+import Tabletop from "tabletop";
+import Papa from "papaparse";
 function TestimonialsPage() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpdGYVJFESTNYg3HMFSbsxkQNIDqA5jAWQT-WbDYiP5cCLU9bIyoIXbGqIdVqokRJW2dkWDFjkfi56/pub?output=csv"
+    )
+      .then((res) => res.text())
+      .then((csvText) => {
+        const parsed = Papa.parse(csvText, { header: true });
+        const entradas = parsed.data.map((row) => ({
+          nombre: row["Nombre Completo"],
+          testimonio: row["Testimonio"],
+          imagen: row["Imagen Perfil"],
+        }));
+        setPosts(entradas);
+      });
+  }, []);
+
   return (
     <>
       <div style={{ height: "10vh" }}></div>
       <div className="containerTestimonial">
- 
+        <h1>Testimonios</h1>
         <div className="containerCardsTest">
-          <div className="cardTest">
-            <div className="containerProfile">
-              <div className="imgProfile"></div>
-              <h1>Alejandra Rodriguez</h1>
+          {posts.map((post, index) => (
+            <div className="cardTest" key={index}>
+              <div className="containerProfile">
+                <div
+                  className="imgProfile"
+                  style={{ backgroundImage: `url(${post.imagen})` }}
+                ></div>
+                <h1>{post.nombre}</h1>
+              </div>
+              <div className="containerTest">
+                <p>{post.testimonio}</p>
+              </div>
             </div>
-            <div className="containerTest">
-              <p>
-                Desde el primer momento me sentí acompañada. El equipo fue
-                claro, profesional y resolvió mi problema legal en menos tiempo
-                del que esperaba. ¡Gracias por todo!
-              </p>
-            </div>
-          </div>
-
-          <div className="cardTest">
-            <div className="containerProfile">
-              <div className="imgProfile2"></div>
-              <h1>Luis Herrera</h1>
-            </div>
-            <div className="containerTest">
-              <p>
-                Tuve una experiencia excelente. Se nota que conocen bien su
-                trabajo y se preocupan genuinamente por sus clientes. Los
-                recomiendo sin dudar
-              </p>
-            </div>
-          </div>
-          <div className="cardTest">
-            <div className="containerProfile">
-              <div className="imgProfile3"></div>
-              <h1>Ana Beltrán</h1>
-            </div>
-            <div className="containerTest">
-              <p>
-                Lo que más valoro es la confianza que me generaron desde la
-                primera reunión. Se encargaron de todo y el trato fue impecable. 
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
