@@ -324,7 +324,7 @@ function Hero() {
                 BIENVENIDO A BETANCOUR LEGAL
               </h1>
               <h1 className="textSlide textSlide2" ref={textSlide2}>
-                LOYALITY IS VERY IMPORTANT TO CLIENT
+                LA LEALTAD ES MUY IMPORTANTE PARA EL CLIENTE
               </h1>
               <p
                 className="textSlide textSlide3"
@@ -337,11 +337,10 @@ function Hero() {
                   marginLeft: "1.5em",
                 }}
               >
-                If you are accused of committing a crime, you will need the very
-                best criminal defense attorneys in Fresno
+                Si se le acusa de cometer un delito, necesitará lo mejor.
               </p>
               <button className="buttonStyle buttonHero" ref={buttonHero}>
-                Lets Start
+                Comencemos
               </button>
             </div>
           </div>

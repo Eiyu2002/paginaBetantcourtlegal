@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../assets/styleBlogspage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom"; // Para navegar entre páginas (si usas react-router)
 
 function BlogsPage() {
   const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -17,9 +20,11 @@ function BlogsPage() {
       });
   }, []);
 
+  console.log(blogs);
+
   return (
     <div className="containerBlogs">
-      <div style={{ height: "20%" }}></div>
+      <div style={{ height: "15%" }}></div>
       <div className="blogCardContainer">
         {blogs.length > 0 ? (
           <div className="blogCards">
@@ -30,9 +35,13 @@ function BlogsPage() {
                 : "";
 
               return (
-                <div className="blogCard" key={blog.id}>
+                <div
+                  className="blogCard"
+                  onClick={() => navigate(`/blog/${blog.id}`)}
+                  key={blog.id}
+                >
                   <div
-                    style={{backgroundImage: `url(${featuredImage})`}}
+                    style={{ backgroundImage: `url(${featuredImage})` }}
                     alt={blog.title.rendered}
                     className="blogCardImage"
                   >
@@ -46,9 +55,6 @@ function BlogsPage() {
                         : "No excerpt available"}
                     </p>{" "}
                     {/* Muestra un resumen */}
-                    <Link to={`/blog/${blog.id}`} className="read-more">
-                      Leer más
-                    </Link>
                   </div>
                 </div>
               );
