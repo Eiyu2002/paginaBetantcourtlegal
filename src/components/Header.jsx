@@ -13,6 +13,9 @@ function Header() {
   const [bgColor1, setBgColor1] = useState("");
   const [bgColor2, setBgColor2] = useState("#");
   const [bgColor3, setBgColor3] = useState("#");
+  const [bgColor4, setBgColor4] = useState("#");
+  const [bgColor5, setBgColor5] = useState("#");
+
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,6 +28,10 @@ function Header() {
         section.scrollIntoView();
       } else if (to === "us") {
         section.scrollIntoView({ behavior: "smooth" });
+      } else if (to === "test") {
+        section.scrollIntoView({ behavior: "instant" });
+      } else if (to === "blogs") {
+        section.scrollIntoView({ behavior: "instant" });
       }
     } else {
       // No estás en la ruta principal, redirige con estado
@@ -53,6 +60,8 @@ function Header() {
     );
     window.addEventListener("scroll", () => handleScroll("cases", setBgColor2));
     window.addEventListener("scroll", () => handleScroll("us", setBgColor3));
+    window.addEventListener("scroll", () => handleScroll("test", setBgColor4));
+    window.addEventListener("scroll", () => handleScroll("blogs", setBgColor5));
 
 
     return () => {
@@ -80,7 +89,7 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <NavLink
+              <Link
                 to={"/"}
                 onClick={() => {
                   setBgColor("#cc8809");
@@ -89,7 +98,7 @@ function Header() {
                 style={{ backgroundColor: bgColor }}
               >
                 Inicio
-              </NavLink>
+              </Link>
             </li>
             <li>
               <Link
@@ -155,26 +164,28 @@ function Header() {
               </Link>
             </li>
             <li>
-              <NavLink
-                to={"/test"}
+              <Link
                 onClick={() => {
-                  setBgColor(""), setBgColor2(""); setBgColor3("");
+                  setBgColor(""), setBgColor2("");
+                  setBgColor3(""); setBgColor5("");
+                  handleScrollToCases("test");
                 }}
-                className={({ isActive }) => (isActive ? "activeLink" : "")}
+                style={{ backgroundColor: bgColor4 }}
               >
                 Testimonios
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 onClick={() => {
-                  setBgColor(""), setBgColor2(""); setBgColor3("");
+                  setBgColor(""), setBgColor2("");
+                  setBgColor3(""); setBgColor4("")
+                  handleScrollToCases("blogs");
                 }}
-                to={"/blogs"}
-                className={({ isActive }) => (isActive ? "activeLink" : "")}
+                style={{ backgroundColor: bgColor5 }}
               >
                 Blogs
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </nav>

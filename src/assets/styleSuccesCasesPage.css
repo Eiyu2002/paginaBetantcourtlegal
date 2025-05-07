@@ -126,45 +126,40 @@
 }
 
 .containerInfoService {
-  width: 70%;
-  height: 80%;
-  background-color: #3d3d3d;
-  position: relative;
-  overflow: hidden;
-  top: 0.5em;
-  right: 0.5em;
+  width: 65% !important;
+  height: 48%;
 }
 
 .elementcontainerInfoService {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-color: var(--color-white);
-
-  top: -1em;
-  right: -1em;
+  gap: 3em;
+  position: relative;
   display: flex;
+  border-bottom: 0.5em solid var(--color-orange);
   justify-content: center;
-  align-items: center;
-
+  align-items: start;
 }
 
-.containerTitleInfoService{
+.containerTitleInfoService {
+  width: 25%;
+  height: 19%;
+  left: 0;
+  top: 1em;
   position: absolute;
-  width: 22%;
-  height: 10%;
-  left: -0.7em;
   overflow: hidden;
-  top: 3em;
-  background-color: var(--color-orange);
+  display: flex;
+  background-color: var(--color-black);
+  border-left: 1em solid var(--color-orange);
 }
 
-.containerTitleInfoService > h1{
+.containerTitleInfoService > h1 {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.2em;
-  width: 100%;
-  height: 100%;
-  margin-left: 2em;
+  font-size: 1.5em;
+
+  color: var(--color-white);
+  margin-left: 0.5em;
   text-wrap: nowrap;
   display: flex;
   align-items: center;
@@ -172,14 +167,13 @@
   position: relative;
 }
 
-
 .containerTitleInfoService > h1::after {
   content: "";
   display: inline-block;
   position: absolute;
   width: 1.1em;
-  border-bottom: 0.19em solid var(--color-black);
-  bottom: 1.2em;
+  border-bottom: 0.19em solid var(--color-orange);
+  bottom: 1em;
   left: 6.6em;
 }
 .containerTitleInfoService > h1::before {
@@ -188,12 +182,11 @@
   position: absolute;
   width: 1.4em;
   border-bottom: 0.19em solid var(--color-white);
-  bottom: 0.9em;
+  bottom: 0.7em;
   left: 6.6em;
 }
 
-
-.containerTitleInfoService2{
+.containerTitleInfoService2 {
   position: absolute;
   width: 38%;
   height: 12%;
@@ -203,7 +196,7 @@
   overflow: hidden;
 }
 
-.containerTitleInfoService2 > h1{
+.containerTitleInfoService2 > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
   width: 100%;
@@ -216,7 +209,6 @@
   font-weight: 600;
   position: relative;
 }
-
 
 .containerTitleInfoService2 > h1::after {
   content: "";
@@ -237,7 +229,7 @@
   right: 0.9em;
 }
 
-.containerTitleInfoService3{
+.containerTitleInfoService3 {
   position: absolute;
   width: 22%;
   height: 10%;
@@ -247,7 +239,7 @@
   background-color: var(--color-orange);
 }
 
-.containerTitleInfoService3 > h1{
+.containerTitleInfoService3 > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
   width: 100%;
@@ -259,7 +251,6 @@
   font-weight: 600;
   position: relative;
 }
-
 
 .containerTitleInfoService3 > h1::after {
   content: "";
@@ -280,9 +271,7 @@
   left: 8.1em;
 }
 
-
-
-.containerTitleInfoService4{
+.containerTitleInfoService4 {
   position: absolute;
   width: 25%;
   height: 10%;
@@ -292,7 +281,7 @@
   background-color: var(--color-orange);
 }
 
-.containerTitleInfoService4 > h1{
+.containerTitleInfoService4 > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
   width: 100%;
@@ -304,7 +293,6 @@
   font-weight: 600;
   position: relative;
 }
-
 
 .containerTitleInfoService4 > h1::after {
   content: "";
@@ -325,8 +313,7 @@
   left: 10.1em;
 }
 
-
-.containerTitleInfoService5{
+.containerTitleInfoService5 {
   position: absolute;
   width: 21%;
   height: 10%;
@@ -336,7 +323,7 @@
   background-color: var(--color-orange);
 }
 
-.containerTitleInfoService5 > h1{
+.containerTitleInfoService5 > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
   width: 100%;
@@ -348,7 +335,6 @@
   font-weight: 600;
   position: relative;
 }
-
 
 .containerTitleInfoService5 > h1::after {
   content: "";
@@ -369,7 +355,6 @@
   left: 7.2em;
 }
 
-
 .toBackService > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
@@ -378,11 +363,11 @@
   transition: all 0.2s;
 }
 
-.toBackService{
+.toBackService {
   cursor: pointer;
-  width: 11%;
-  height: 8%;
-  border-left: solid var(--color-orange) 1em;
+  width: 15%;
+  height: 13%;
+  border-bottom: solid var(--color-orange) 0.3em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -392,25 +377,22 @@
   right: 2em;
 }
 
-.toBackService:hover > h1{
+.toBackService:hover > h1 {
   color: var(--color-orange);
 }
 
-
-.containerListService{
-  width: 40%;
-  height: 45%;
+.containerListService {
+  
+  margin-top: 5em;
   display: flex;
   justify-content: center;
   overflow: hidden;
-  margin-top: 2em;
-
 }
 
-.containerListService > ol > li > h1{
+.containerListService > ol > li > h1 {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.5em;
+  font-weight: 600;
   color: var(--color-black);
   display: inline-block;
   margin-left: 1em;
@@ -418,19 +400,72 @@
   text-wrap: nowrap;
 }
 
-.containerListService > ol > li{
+.containerListService > ol > li {
   cursor: pointer;
   white-space: nowrap;
 }
 
-.containerListService > ol > li:hover > h1{
+.containerListService > ol > li:hover > h1 {
   color: var(--color-orange);
 }
 
-.containerListService > ol > li > i{
+.containerListService > ol > li > i {
   color: var(--color-orange);
 }
 
 .containerListService > ol > li {
   margin-top: 1em;
+}
+
+.containersAllIcons {
+  position: absolute;
+  bottom: 2em;
+
+  display: flex;
+  gap: 1em;
+}
+
+.containersAllIcons > i {
+  font-size: 3em;
+  color: var(--color-orange);
+}
+
+@media (min-width: 1400px) {
+  .containerListService > ol > li > h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--color-black);
+    display: inline-block;
+    margin-left: 1em;
+    transition: all 0.2s;
+    text-wrap: nowrap;
+  }
+  .containersAllIcons > i {
+    font-size: 5em;
+    color: var(--color-orange);
+  }
+
+  .cardSuccesCases {
+    position: relative;
+    height: 80%;
+    width: 60%;
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .titleSuccesCases {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.3em;
+  }
+
+  .swiperSuccesCases {
+    width: 100%;
+    height: 70%;
+    margin-top: 3em;
+  }
 }

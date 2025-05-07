@@ -1,15 +1,16 @@
 .containerBlogs {
   width: 100vw;
   height: 100vh;
+
 }
 
 .blogCardContainer {
   display: flex;
 
   justify-content: center;
- 
+  align-items: center;
   width: 100%;
-  height: 90%;
+  height: 100%;
 }
 
 .blogCardImage {
@@ -23,15 +24,13 @@
 
 .blogCard {
   display: flex;
-
   overflow: hidden;
   cursor: pointer;
-
   flex: 0 0 auto;
-
   border: 0.1em solid var(--color-orange);
-  width: 48%;
-  height: 35%;
+
+  width: 90%;
+  height: 50%;
   display: flex;
   border-radius: 10px 10px 10px 10px;
 }
@@ -74,11 +73,24 @@
   text-overflow: ellipsis;
 }
 .blogCards {
-  width: 80%;
-  height: 100%;
+  width: 95%;
+  height: 80%;
   display: flex;
-  gap: 1em 2em;
+  align-items: center;
+  justify-content: center;
   
-  flex-wrap: wrap;
+}
+
+.swiperBlogs{
+  height: 90%;
+  display: flex;
+  align-items: center;
+ 
+}
+
+.slideCard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }

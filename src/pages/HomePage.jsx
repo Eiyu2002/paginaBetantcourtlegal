@@ -1,11 +1,13 @@
 import React from "react";
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import Hero from "../components/Hero";
 import ServicePage from "./ServicePage";
 import SuccesCasesPage from "./SuccesCasesPage";
 import AboutPage from "./AboutPage";
+import TestimonialPage from "./TestimonialsPage";
+import BlogsPage from "./BlogsPage";
 
 function HomePage() {
   const location = useLocation();
@@ -28,6 +30,8 @@ function HomePage() {
 
       <SuccesCasesPage></SuccesCasesPage>
       <ServicePage></ServicePage>
+      <TestimonialPage></TestimonialPage>
+      <BlogsPage></BlogsPage>
     </>
   );
 }

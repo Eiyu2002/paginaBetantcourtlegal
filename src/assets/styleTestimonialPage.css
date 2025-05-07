@@ -15,20 +15,21 @@
 
 .containerCardsTest {
   width: 100%;
-  height: 80%;
+  height: 85%;
   display: flex;
+  background-color: var(--color-black);
   flex-direction: column;
   gap: 1em;
   align-items: center;
   overflow-y: auto;
-  border-radius: 10px 10px 10px 10px;
+  
 }
 
 .cardTest {
   flex: 0 0 auto;
   background-color: var(--color-white);
   margin: 1em;
-  border: 0.1em solid var(--color-orange);
+  border: 0.2em solid var(--color-orange);
   width: 55%;
   height: 42%;
   display: flex;
@@ -121,4 +122,46 @@
   align-items: center;
   border-left: solid 1em var(--color-orange);
   cursor: pointer;
+}
+
+
+@media (min-width: 1400px) {
+  .containerTest {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .containerTest > p {
+    color: var(--color-black);
+    text-align: left;
+    width: 80%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    line-height: 1.5;
+    overflow-y: auto;
+  }
+
+  .imgProfile {
+    clip-path: circle(50% at 50% 50%);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    width: 75%;
+    height: 75%;
+  }
+  
+  .containerProfile > h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    text-align: center;
+    margin-top: 1em;
+    color: var(--color-black);
+    width: 100%;
+  }
 }

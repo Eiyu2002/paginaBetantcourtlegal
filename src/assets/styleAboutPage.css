@@ -88,6 +88,8 @@
   background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/about.jpg");
   width: 60%;
   height: 80%;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
   top: 7em;
   left: 6em;
@@ -186,10 +188,11 @@
 }
 
 .img4 {
-  background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/author-1.jpg");
+  background-image: url("https://betancourtlegal.es/wp-content/uploads/2024/06/IMG_8259-1-e1738940963420.jpg");
   background-position: center;
   margin-left: 1em;
   background-size: contain;
+  background-repeat: no-repeat;
   clip-path: circle(50% at 50% 50%);
   width: 20%;
   height: 100%;

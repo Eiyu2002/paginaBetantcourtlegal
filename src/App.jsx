@@ -10,7 +10,7 @@ import BlogsPage from "./pages/BlogsPage.jsx";
 import BlogDetailsPage from "./pages/BlogDetailsPage.jsx";
 
 function App() {
-  const fechaLimite = new Date("2025-05-05T00:00:00"); // <-- Fecha límite
+  const fechaLimite = new Date("2025-06-05T00:00:00"); // <-- Fecha límite
   const ahora = new Date();
 
   if (ahora > fechaLimite) {

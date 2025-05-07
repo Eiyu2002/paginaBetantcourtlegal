@@ -171,6 +171,9 @@ function SuccesCasesPage() {
   };
 
   const handleActive = (element) => {
+    document.getElementsByClassName("containersAllIcons")[0].style.display =
+      "none";
+
     gsap.to(element.current, {
       width: "0%",
       duration: 0.5,
@@ -194,16 +197,12 @@ function SuccesCasesPage() {
       <div style={{ height: "10%" }}></div>
 
       <div className="containerSuccesCases">
-        {activate1 === 0 && (
-          <>
-            <div className="containerSuccesCasesText1">
-              <h1 className="succesCasesText1">SERVICIOS</h1>
-            </div>
-            <div className="containerSuccesCasesText2">
-              <h1 className="succesCasesText2">Our Practice Area</h1>
-            </div>
-          </>
-        )}
+        <div className="containerSuccesCasesText1">
+          <h1 className="succesCasesText1">SERVICIOS</h1>
+        </div>
+        <div className="containerSuccesCasesText2">
+          <h1 className="succesCasesText2">Our Practice Area</h1>
+        </div>
 
         {activate1 === 0 && (
           <Swiper
@@ -445,6 +444,9 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
+                <div className="containersAllIcons">
+                  <i className="fa-solid fa-people-roof"></i>
+                </div>
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"
@@ -500,6 +502,9 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
+                <div className="containersAllIcons">
+                  <i className="fa-solid fa-briefcase"></i>{" "}
+                </div>
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"
@@ -533,6 +538,9 @@ function SuccesCasesPage() {
                       <h1>Contratos de alquiler</h1>
                     </li>
                   </ol>
+                </div>
+                <div className="containersAllIcons">
+                  <i className="fa-solid fa-house-medical-circle-check"></i>{" "}
                 </div>
 
                 <div
@@ -593,6 +601,9 @@ function SuccesCasesPage() {
                       <h1>Jugos Rápidos</h1>
                     </li>
                   </ol>
+                </div>
+                <div className="containersAllIcons">
+                  <i className="fa-solid fa-handcuffs"></i>
                 </div>
                 <div
                   onClick={() => handleActive(containerInfoService)}

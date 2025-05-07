@@ -173,10 +173,7 @@ function AboutPage() {
                     <i className="fa-solid fa-square-check"></i>Practical
                     Commercial Solution
                   </li>
-                  <li>
-                    <i className="fa-solid fa-square-check"></i>Probably the
-                    Largest Law Firm
-                  </li>
+           
                 </ul>
               </div>
             </div>
