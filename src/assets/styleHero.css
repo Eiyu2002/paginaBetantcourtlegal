@@ -1,6 +1,6 @@
 .containerHero {
   width: 100vw;
-  
+
   height: 90vh;
   margin-top: 10vh;
   padding: 0;
@@ -41,7 +41,7 @@ p {
 }
 
 .buttonHero {
-  width: 13%;
+  width: 15%;
   height: 8%;
   margin-left: 2em;
   margin-top: 1em;
@@ -86,7 +86,7 @@ p {
 }
 
 .buttonHero2 {
-  width: 25%;
+  width: 30%;
   height: 13%;
 
   margin-top: 1em;
@@ -111,13 +111,12 @@ p {
   gap: 2em;
   overflow: hidden;
 }
-.containerAnimate2 > button{
+.containerAnimate2 > button {
   width: 25%;
   height: 10%;
-
 }
 
-.containerAnimate2 > p{
+.containerAnimate2 > p {
   width: 80%;
 }
 
@@ -133,7 +132,8 @@ p {
   right: 0;
 }
 
-.underline7, .underline8{
+.underline7,
+.underline8 {
   position: absolute;
   top: 0;
   left: 0;
@@ -151,4 +151,25 @@ p {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+@media (max-width: 950px) {
+ 
+
+
+  .textSlide3 {
+    font-size: 0.8em !important;
+  }
+  .buttonHero {
+    width: 50%;
+    height: 7%;
+
+    margin-left: 0.7em !important;
+    margin-top: 0em !important;
+  }
+
+  .containerAnimate2{
+    width: 80%!important;
+    height: 60%!important;
+  }
 }

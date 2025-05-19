@@ -13,11 +13,14 @@ import {
   Autoplay,
   EffectFade,
 } from "swiper/modules";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { UserContext } from "../context/Context";
 
 function Hero() {
+  const { windowWidth } = useContext(UserContext);
+
   gsap.registerPlugin(useGSAP);
   const textSlide1 = useRef(null);
   const textSlide2 = useRef(null);
@@ -127,26 +130,50 @@ function Hero() {
         ease: "power3.out",
       }
     );
-    gsap.fromTo(
-      underline4.current,
-      { width: "0%", borderBottom: "solid 1px #fffffff" },
-      {
-        width: "55%",
-        borderBottom: "solid 1px #fffffff",
-        duration: 1.5,
-        ease: "power3.out",
-      }
-    );
-    gsap.fromTo(
-      underline5.current,
-      { width: "0%", borderBottom: "solid 1px #fffffff" },
-      {
-        width: "55%",
-        borderBottom: "solid 1px #fffffff",
-        duration: 2,
-        ease: "power3.out",
-      }
-    );
+
+    if (windowWidth > 950) {
+      gsap.fromTo(
+        underline4.current,
+        { width: "0%", borderBottom: "solid 1px #fffffff" },
+        {
+          width: "55%",
+          borderBottom: "solid 1px #fffffff",
+          duration: 1.5,
+          ease: "power3.out",
+        }
+      );
+      gsap.fromTo(
+        underline5.current,
+        { width: "0%", borderBottom: "solid 1px #fffffff" },
+        {
+          width: "55%",
+          borderBottom: "solid 1px #fffffff",
+          duration: 2,
+          ease: "power3.out",
+        }
+      );
+    } else {
+      gsap.fromTo(
+        underline4.current,
+        { width: "0%", borderBottom: "solid 1px #fffffff" },
+        {
+          width: "100%",
+          borderBottom: "solid 1px #fffffff",
+          duration: 1.5,
+          ease: "power3.out",
+        }
+      );
+      gsap.fromTo(
+        underline5.current,
+        { width: "0%", borderBottom: "solid 1px #fffffff" },
+        {
+          width: "100%",
+          borderBottom: "solid 1px #fffffff",
+          duration: 2,
+          ease: "power3.out",
+        }
+      );
+    }
 
     gsap.fromTo(
       underline7.current,
@@ -303,39 +330,63 @@ function Hero() {
       >
         <SwiperSlide>
           <div
-            style={{
-              backgroundImage: `url(https://betancourtlegal.es/wp-content/uploads/2021/07/slider4-1.jpg)`,
-            }}
+            style={
+              windowWidth < 950
+                ? {
+                    backgroundImage: `url(https://betancourtlegal.es/wp-content/uploads/2021/07/slider4-1.jpg)`,
+                    backgroundPosition: "55% 50%",
+                  }
+                : {
+                    backgroundImage: `url(https://betancourtlegal.es/wp-content/uploads/2021/07/slider4-1.jpg)`,
+                  }
+            }
             className="slide"
           >
             <div className="containerTextSlide">
               <div ref={underline4}></div>
               <div ref={underline5}></div>
               <h1
-                style={{
-                  fontWeight: "200",
-                  fontSize: "1.5em",
-                  marginLeft: "1.4em",
-                  letterSpacing: "0.3em",
-                }}
+                style={
+                  windowWidth > 950
+                    ? {
+                        fontWeight: "200",
+                        fontSize: "1.5em",
+                        marginLeft: "1.4em",
+                        letterSpacing: "0.3em",
+                      }
+                    : {
+                        marginLeft: "1em",
+                        fontWeight: "200",
+                        fontSize: "0.8em",
+                        letterSpacing: "0.3em",
+                      }
+                }
                 className="textSlide textSlide1"
                 ref={textSlide1}
               >
                 BIENVENIDO A BETANCOUR LEGAL
               </h1>
-              <h1 className="textSlide textSlide2" ref={textSlide2}>
+              <h1
+                className="textSlide textSlide2"
+                style={windowWidth < 950 ? {fontSize: "0.8em"} : { undefined }}
+                ref={textSlide2}
+              >
                 LA LEALTAD ES MUY IMPORTANTE PARA EL CLIENTE
               </h1>
               <p
                 className="textSlide textSlide3"
                 ref={textSlide3}
-                style={{
-                  fontWeight: "500",
-                  fontSize: "1.3em",
-                  width: "50%",
-                  textAlign: "left",
-                  marginLeft: "1.5em",
-                }}
+                style={
+                  windowWidth > 950
+                    ? {
+                        fontWeight: "500",
+                        fontSize: "1.3em",
+                        width: "50%",
+                        textAlign: "left",
+                        marginLeft: "1.5em",
+                      }
+                    : { width: "60%", textAlign: "left" }
+                }
               >
                 Si se le acusa de cometer un delito, necesitará lo mejor.
               </p>
@@ -372,8 +423,13 @@ function Hero() {
                 >
                   BIENVENIDO A BETANCOUR LEGAL
                 </h1>
-                <h1 className="textSlide textSlide2">
-                  LOYALITY IS VERY IMPORTANT TO CLIENT
+                <h1
+                  className="textSlide textSlide2"
+                  style={
+                    windowWidth < 950 ? { fontSize: "0.2em" } : { undefined }
+                  }
+                >
+                  LA LEALTAD ES MUY IMPORTANTE PARA EL CLIENTE
                 </h1>
                 <p
                   className="textSlide textSlide3"
@@ -384,10 +440,15 @@ function Hero() {
                     textAlign: "center",
                   }}
                 >
-                  If you are accused of committing a crime, you will need the
-                  very best criminal defense attorneys in Fresno
+                  Si se le acusa de cometer un delito, necesitará lo mejor.
                 </p>
-                <button className="buttonStyle">Lets Start</button>
+                <button
+                  className="buttonStyle buttonHero2"
+                  style={windowWidth < 950 ? { width: "50%" } : { width: "28%" }}
+                  ref={buttonHero2}
+                >
+                  Comencemos
+                </button>
               </div>
             </div>
           </div>

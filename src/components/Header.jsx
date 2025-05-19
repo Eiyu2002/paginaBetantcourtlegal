@@ -7,7 +7,7 @@ import { UserContext } from "../context/Context";
 import "../assets/styleHeader.css";
 
 function Header() {
-  const { activate1, setActivate1 } = useContext(UserContext);
+  const { activate1, setActivate1, windowWidth } = useContext(UserContext);
 
   const [bgColor, setBgColor] = useState("#");
   const [bgColor1, setBgColor1] = useState("");
@@ -16,6 +16,7 @@ function Header() {
   const [bgColor4, setBgColor4] = useState("#");
   const [bgColor5, setBgColor5] = useState("#");
 
+  const [menuSide, setMenuSide] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -60,14 +61,14 @@ function Header() {
     );
     window.addEventListener("scroll", () => handleScroll("cases", setBgColor2));
     window.addEventListener("scroll", () => handleScroll("us", setBgColor3));
-    window.addEventListener("scroll", () => handleScroll("test", setBgColor4));
+    window.addEventListener("scroll", () => handleScroll("test2", setBgColor4));
     window.addEventListener("scroll", () => handleScroll("blogs", setBgColor5));
-
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+ 
 
   const [drop, setDrop] = useState(false);
 
@@ -75,120 +76,281 @@ function Header() {
     setDrop(!drop);
   };
 
-  const handleActiveLink = (e) => {
-    document.querySelectorAll(".activeLink").forEach((element) => {
-      element.classList.remove("activeLink");
-    });
 
-    e.target.classList.add("activeLink");
-  };
 
   return (
     <>
       <header className="header">
-        <nav>
-          <ul>
-            <li>
-              <Link
-                to={"/"}
-                onClick={() => {
-                  setBgColor("#cc8809");
-                  window.scrollTo({ top: 0 });
-                }}
-                style={{ backgroundColor: bgColor }}
-              >
-                Inicio
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={() => handleScrollToCases("us")}
-                to="us"
-                smooth={true}
-                duration={900}
-                spy={true}
-                style={{ backgroundColor: bgColor3 }}
-              >
-                Nosotros
-              </Link>
-            </li>
-            <li
-              onMouseEnter={() => handleDrop()}
-              onMouseLeave={() => handleDrop()}
-            >
-              <span style={{ backgroundColor: bgColor1 }}>Servicios ▼</span>
+        {windowWidth < 950 && (
+          <>
+            <i onClick={()=> setMenuSide(!menuSide)} className="openMenuIcon fa-solid fa-bars"></i>
+            <div className="containerNavMobile" style={menuSide ? { left: "0" } : { left: "-50%" }}>
+              <nav className="navMobile">
+                <ul>
+                  <li className="liCloseIcon" onClick={()=> setMenuSide(!menuSide)} >
+                   
+                  </li>
+                  <li>
+                    <Link
+                      to={"/"}
+                      onClick={() => {
+                        setBgColor("#cc8809");
+                        window.scrollTo({ top: 0 });
+                      }}
+                      style={{ backgroundColor: bgColor }}
+                    >
+                      Inicio
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() => handleScrollToCases("us")}
+                      to="us"
+                      smooth={true}
+                      duration={900}
+                      spy={true}
+                      style={{ backgroundColor: bgColor3 }}
+                    >
+                      Nosotros
+                    </Link>
+                  </li>
+                  <li
+                    onMouseEnter={windowWidth >= 950 ? handleDrop : undefined}
+                    onMouseLeave={windowWidth >= 950 ? handleDrop : undefined}
+                    onClick={windowWidth <= 950 ? handleDrop : undefined}
+                  >
+                    <span
+                      className="spanMobile"
+                      style={{ backgroundColor: bgColor1 }}
+                    >
+                      Servicios ▼
+                      {drop && (
+                        <div className="dropdownMobile">
+                          <ul>
+                            <li>
+                              {" "}
+                              <Link
+                                style={
+                                  activate1 === 3
+                                    ? { color: "#cc8809", textIndent: "1.5em" }
+                                    : { color: "#222222" }
+                                }
+                                onClick={() => setActivate1(3)}
+                                to={"services"}
+                              >
+                                Derecho Laboral
+                              </Link>
+                            </li>
+                            <li>
+                              {" "}
+                              <Link
+                                style={
+                                  activate1 === 2
+                                    ? { color: "#cc8809", textIndent: "1.5em" }
+                                    : { color: "#222222" }
+                                }
+                                onClick={() => setActivate1(2)}
+                                to={"services"}
+                              >
+                                Derecho De Familia Y Matrimonial
+                              </Link>
+                            </li>
+                            <li>
+                              {" "}
+                              <Link
+                                style={
+                                  activate1 === 5
+                                    ? { color: "#cc8809", textIndent: "1.5em" }
+                                    : { color: "#222222" }
+                                }
+                                onClick={() => setActivate1(5)}
+                                to={"services"}
+                              >
+                                Derecho Penal
+                              </Link>
+                            </li>
+                            <li>
+                              {" "}
+                              <Link
+                                style={
+                                  activate1 === 4
+                                    ? { color: "#cc8809", textIndent: "1.5em" }
+                                    : { color: "#222222" }
+                                }
+                                onClick={() => setActivate1(4)}
+                                to={"services"}
+                              >
+                                Derecho Inmobiliario
+                              </Link>
+                            </li>
+                            <li>
+                              {" "}
+                              <Link
+                                style={
+                                  activate1 === 1
+                                    ? { color: "#cc8809", textIndent: "1.5em" }
+                                    : { color: "#222222" }
+                                }
+                                onClick={() => setActivate1(1)}
+                                to={"services"}
+                              >
+                                Derecho Civil
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      )}
+                    </span>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() => handleScrollToCases("cases")}
+                      style={{ backgroundColor: bgColor2 }}
+                    >
+                      Casos de Exitos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() => {
+                        setBgColor(""), setBgColor2("");
+                        setBgColor3("");
+                        setBgColor5("");
+                        handleScrollToCases("test");
+                      }}
+                      style={{ backgroundColor: bgColor4 }}
+                    >
+                      Testimonios
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      onClick={() => {
+                        setBgColor(""), setBgColor2("");
+                        setBgColor3("");
+                        setBgColor4("");
+                        handleScrollToCases("blogs");
+                      }}
+                      style={{ backgroundColor: bgColor5 }}
+                    >
+                      Blogs
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </>
+        )}
 
-              {drop && (
-                <div className="dropdown">
-                  <ul>
-                    <li>
-                      {" "}
-                      <Link onClick={() => setActivate1(3)} to={"services"}>
-                        Derecho Laboral
-                      </Link>
-                    </li>
-                    <li>
-                      {" "}
-                      <Link onClick={() => setActivate1(2)} to={"services"}>
-                        Derecho De Familia Y Matrimonial
-                      </Link>
-                    </li>
-                    <li>
-                      {" "}
-                      <Link onClick={() => setActivate1(5)} to={"services"}>
-                        Derecho Penal
-                      </Link>
-                    </li>
-                    <li>
-                      {" "}
-                      <Link onClick={() => setActivate1(4)} to={"services"}>
-                        Derecho Inmobiliario
-                      </Link>
-                    </li>
-                    <li>
-                      {" "}
-                      <Link onClick={() => setActivate1(1)} to={"services"}>
-                        Derecho Civil
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              )}
-            </li>
-            <li>
-              <Link
-                onClick={() => handleScrollToCases("cases")}
-                style={{ backgroundColor: bgColor2 }}
+        {windowWidth > 950 && (
+          <nav className="navPc">
+            <ul>
+              <li>
+                <Link
+                  to={"/"}
+                  onClick={() => {
+                    setBgColor("#cc8809");
+                    window.scrollTo({ top: 0 });
+                  }}
+                  style={{ backgroundColor: bgColor }}
+                >
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={() => handleScrollToCases("us")}
+                  to="us"
+                  smooth={true}
+                  duration={900}
+                  spy={true}
+                  style={{ backgroundColor: bgColor3 }}
+                >
+                  Nosotros
+                </Link>
+              </li>
+              <li
+                onMouseEnter={() => handleDrop()}
+                onMouseLeave={() => handleDrop()}
               >
-                Casos de Exitos
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={() => {
-                  setBgColor(""), setBgColor2("");
-                  setBgColor3(""); setBgColor5("");
-                  handleScrollToCases("test");
-                }}
-                style={{ backgroundColor: bgColor4 }}
-              >
-                Testimonios
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={() => {
-                  setBgColor(""), setBgColor2("");
-                  setBgColor3(""); setBgColor4("")
-                  handleScrollToCases("blogs");
-                }}
-                style={{ backgroundColor: bgColor5 }}
-              >
-                Blogs
-              </Link>
-            </li>
-          </ul>
-        </nav>
+                <span className="spanPc" style={{ backgroundColor: bgColor1 }}>
+                  Servicios ▼
+                </span>
+
+                {drop && (
+                  <div className="dropdown">
+                    <ul>
+                      <li>
+                        {" "}
+                        <Link onClick={() => setActivate1(3)} to={"services"}>
+                          Derecho Laboral
+                        </Link>
+                      </li>
+                      <li>
+                        {" "}
+                        <Link onClick={() => setActivate1(2)} to={"services"}>
+                          Derecho De Familia Y Matrimonial
+                        </Link>
+                      </li>
+                      <li>
+                        {" "}
+                        <Link onClick={() => setActivate1(5)} to={"services"}>
+                          Derecho Penal
+                        </Link>
+                      </li>
+                      <li>
+                        {" "}
+                        <Link onClick={() => setActivate1(4)} to={"services"}>
+                          Derecho Inmobiliario
+                        </Link>
+                      </li>
+                      <li>
+                        {" "}
+                        <Link onClick={() => setActivate1(1)} to={"services"}>
+                          Derecho Civil
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </li>
+              <li>
+                <Link
+                  onClick={() => handleScrollToCases("cases")}
+                  style={{ backgroundColor: bgColor2 }}
+                >
+                  Casos de Exitos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={() => {
+                    setBgColor(""), setBgColor2("");
+                    setBgColor3("");
+                    setBgColor5("");
+                    handleScrollToCases("test");
+                  }}
+                  style={{ backgroundColor: bgColor4 }}
+                >
+                  Testimonios
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={() => {
+                    setBgColor(""), setBgColor2("");
+                    setBgColor3("");
+                    setBgColor4("");
+                    handleScrollToCases("blogs");
+                  }}
+                  style={{ backgroundColor: bgColor5 }}
+                >
+                  Blogs
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        )}
 
         <div className="containerIconsHeader">
           <i className="fa-solid fa-magnifying-glass"></i>
