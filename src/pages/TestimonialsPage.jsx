@@ -23,8 +23,8 @@ function TestimonialsPage() {
 
   return (
     <>
-      <div style={{ height: "10vh" }}></div>
-      <div id="test" className="containerTestimonial">
+      <div id="test" style={{ height: "10vh" }}></div>
+      <div className="containerTestimonial">
         <h1>Testimonios</h1>
         <div className="containerCardsTest">
           {posts.map((post, index) => (

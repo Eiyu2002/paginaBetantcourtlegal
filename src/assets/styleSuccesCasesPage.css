@@ -77,8 +77,8 @@
 
 .cardSuccesCases {
   position: relative;
-  height: 100%;
-  width: 67%;
+  height: 84%;
+  width: 60%;
   background-color: var(--color-white);
   display: flex;
   justify-content: center;
@@ -126,7 +126,8 @@
 }
 
 .containerInfoService {
-  width: 65% !important;
+  margin-top: 2em;
+  width: 65%;
   height: 48%;
 }
 
@@ -173,7 +174,7 @@
   position: absolute;
   width: 1.1em;
   border-bottom: 0.19em solid var(--color-orange);
-  bottom: 1em;
+  bottom: 47%;
   left: 6.6em;
 }
 .containerTitleInfoService > h1::before {
@@ -182,18 +183,20 @@
   position: absolute;
   width: 1.4em;
   border-bottom: 0.19em solid var(--color-white);
-  bottom: 0.7em;
+  bottom: 30%;
   left: 6.6em;
 }
 
 .containerTitleInfoService2 {
+  width: 42%;
+  height: 19%;
+  left: 0;
+  top: 1em;
   position: absolute;
-  width: 38%;
-  height: 12%;
-  left: -0.7em;
-  top: 3em;
-  background-color: var(--color-orange);
   overflow: hidden;
+  display: flex;
+  background-color: var(--color-black);
+  border-left: 1em solid var(--color-orange);
 }
 
 .containerTitleInfoService2 > h1 {
@@ -203,6 +206,7 @@
   height: 100%;
   margin-left: 0.5em;
   text-wrap: nowrap;
+  color: var(--color-white);
 
   display: flex;
   align-items: center;
@@ -215,7 +219,7 @@
   display: inline-block;
   position: absolute;
   width: 1.2em;
-  border-bottom: 0.2em solid var(--color-black);
+  border-bottom: 0.2em solid var(--color-orange);
   bottom: 1.4em;
   right: 1.4em;
 }
@@ -229,19 +233,26 @@
   right: 0.9em;
 }
 
+.listService2 > ol > li > h1 {
+  font-size: 1.1em !important;
+}
+
 .containerTitleInfoService3 {
+  width: 25%;
+  height: 19%;
+  left: 0;
+  top: 1em;
   position: absolute;
-  width: 22%;
-  height: 10%;
-  left: -0.7em;
-  top: 3em;
   overflow: hidden;
-  background-color: var(--color-orange);
+  display: flex;
+  background-color: var(--color-black);
+  border-left: 1em solid var(--color-orange);
 }
 
 .containerTitleInfoService3 > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
+  color: var(--color-white);
   width: 100%;
   height: 100%;
   margin-left: 0.5em;
@@ -257,8 +268,8 @@
   display: inline-block;
   position: absolute;
   width: 1.1em;
-  border-bottom: 0.18em solid var(--color-black);
-  bottom: 1.2em;
+  border-bottom: 0.18em solid var(--color-orange);
+  bottom: 47%;
   left: 8.1em;
 }
 .containerTitleInfoService3 > h1::before {
@@ -267,24 +278,30 @@
   position: absolute;
   width: 1.6em;
   border-bottom: 0.18em solid var(--color-white);
-  bottom: 0.9em;
+  bottom: 30%;
   left: 8.1em;
+}
+.listService3 {
+  font-size: 1em !important;
 }
 
 .containerTitleInfoService4 {
+  width: 27%;
+  height: 19%;
+  left: 0;
+  top: 1em;
   position: absolute;
-  width: 25%;
-  height: 10%;
-  left: -0.7em;
   overflow: hidden;
-  top: 3em;
-  background-color: var(--color-orange);
+  display: flex;
+  background-color: var(--color-black);
+  border-left: 1em solid var(--color-orange);
 }
 
 .containerTitleInfoService4 > h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.2em;
   width: 100%;
+  color: var(--color-white);
   text-wrap: nowrap;
   height: 100%;
   margin-left: 0.5em;
@@ -299,8 +316,8 @@
   display: inline-block;
   position: absolute;
   width: 1.1em;
-  border-bottom: 0.18em solid var(--color-black);
-  bottom: 1.2em;
+  border-bottom: 0.18em solid var(--color-orange);
+  bottom: 1.3em;
   left: 10.1em;
 }
 .containerTitleInfoService4 > h1::before {
@@ -309,18 +326,23 @@
   position: absolute;
   width: 1.6em;
   border-bottom: 0.18em solid var(--color-white);
-  bottom: 0.9em;
+  bottom: 1em;
   left: 10.1em;
+}
+.listService4 {
+  font-size: 1.1em !important;
 }
 
 .containerTitleInfoService5 {
+  width: 25%;
+  height: 19%;
+  left: 0;
+  top: 1em;
   position: absolute;
-  width: 21%;
-  height: 10%;
-  left: -0.7em;
-  top: 3em;
   overflow: hidden;
-  background-color: var(--color-orange);
+  display: flex;
+  background-color: var(--color-black);
+  border-left: 1em solid var(--color-orange);
 }
 
 .containerTitleInfoService5 > h1 {
@@ -330,6 +352,7 @@
   height: 100%;
   margin-left: 1em;
   text-wrap: nowrap;
+  color: var(--color-white);
   display: flex;
   align-items: center;
   font-weight: 600;
@@ -341,8 +364,8 @@
   display: inline-block;
   position: absolute;
   width: 1.1em;
-  border-bottom: 0.18em solid var(--color-black);
-  bottom: 1.2em;
+  border-bottom: 0.18em solid var(--color-orange);
+  bottom: 1.3em;
   left: 7.2em;
 }
 .containerTitleInfoService5 > h1::before {
@@ -351,7 +374,7 @@
   position: absolute;
   width: 1.6em;
   border-bottom: 0.18em solid var(--color-white);
-  bottom: 0.9em;
+  bottom: 1em;
   left: 7.2em;
 }
 
@@ -382,8 +405,7 @@
 }
 
 .containerListService {
-  
-  margin-top: 5em;
+  margin-top: 10%;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -391,7 +413,7 @@
 
 .containerListService > ol > li > h1 {
   font-family: "Montserrat", sans-serif;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 600;
   color: var(--color-black);
   display: inline-block;
@@ -414,7 +436,7 @@
 }
 
 .containerListService > ol > li {
-  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .containersAllIcons {
@@ -441,9 +463,18 @@
     transition: all 0.2s;
     text-wrap: nowrap;
   }
-  .containersAllIcons > i {
-    font-size: 5em;
-    color: var(--color-orange);
+
+  .containerTitleInfoService > h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5em;
+
+    color: var(--color-white);
+    margin-left: 0.5em;
+    text-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    position: relative;
   }
 
   .cardSuccesCases {
@@ -467,5 +498,36 @@
     width: 100%;
     height: 70%;
     margin-top: 3em;
+  }
+
+  .containerTitleInfoService {
+    font-size: 1.4em;
+  }
+  .containerListService {
+    margin-top: 11%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .containerTitleInfoService2{
+    font-size: 1.4em;
+  }
+
+
+  .listService2{
+    font-size: 1.3em!important;
+  }
+
+  .containerTitleInfoService3{
+    font-size: 1.5em;
+  }
+
+  
+  .containerTitleInfoService4{
+    font-size: 1.4em;
+  }
+
+  .containerTitleInfoService5{
+    font-size: 1.4em;
   }
 }

@@ -24,6 +24,8 @@ function SuccesCasesPage() {
   const iconsSuccesCases4 = useRef(null);
   const iconsSuccesCases5 = useRef(null);
   const containerInfoService = useRef(null);
+  const swiperSuccesCases = useRef(null);
+
   const { activate1, setActivate1 } = useContext(UserContext);
 
   const handleMouseEnter1 = () => {
@@ -171,11 +173,9 @@ function SuccesCasesPage() {
   };
 
   const handleActive = (element) => {
-    document.getElementsByClassName("containersAllIcons")[0].style.display =
-      "none";
-
     gsap.to(element.current, {
       width: "0%",
+      height: "0%",
       duration: 0.5,
       onComplete: () => {
         setActivate1(0);
@@ -184,11 +184,27 @@ function SuccesCasesPage() {
     });
   };
 
+  const handleActive2 = (element, num) => {
+    gsap.to(element.current, {
+      height: "0%",
+      duration: 0.5,
+      onComplete: () => {
+        setActivate1(num);
+      },
+      ease: "power3.out",
+    });
+  };
+
   useGSAP(() => {
     gsap.fromTo(
       containerInfoService.current,
-      { width: "0%" },
-      { width: "70%", duration: 1, ease: "power3.out" }
+      { width: "0%", height: "0%" },
+      { width: "65%", height: "48%", duration: 1, ease: "power3.out" }
+    );
+    gsap.fromTo(
+      swiperSuccesCases.current,
+      { height: "0%" },
+      { height: "70%", duration: 1, ease: "power3.out" }
     );
   }, [activate1]);
 
@@ -207,6 +223,7 @@ function SuccesCasesPage() {
         {activate1 === 0 && (
           <Swiper
             className="swiperSuccesCases"
+            ref={swiperSuccesCases}
             slidesPerView={3}
             centeredSlides={true}
             loop={true}
@@ -227,7 +244,7 @@ function SuccesCasesPage() {
                 onMouseEnter={handleMouseEnter1}
                 onMouseLeave={handleMouseLeave1}
                 onClick={() => {
-                  setActivate1(1);
+                  handleActive2(swiperSuccesCases, 1);
                 }}
               >
                 <div className="elementSuccesCases" ref={elementSuccesCases1}>
@@ -247,7 +264,7 @@ function SuccesCasesPage() {
               <div
                 className="cardSuccesCases"
                 onClick={() => {
-                  setActivate1(2);
+                  handleActive2(swiperSuccesCases, 2);
                 }}
                 onMouseEnter={handleMouseEnter2}
                 onMouseLeave={handleMouseLeave2}
@@ -272,7 +289,7 @@ function SuccesCasesPage() {
               <div
                 className="cardSuccesCases"
                 onClick={() => {
-                  setActivate1(3);
+                  handleActive2(swiperSuccesCases, 3);
                 }}
                 onMouseEnter={handleMouseEnter3}
                 onMouseLeave={handleMouseLeave3}
@@ -295,7 +312,7 @@ function SuccesCasesPage() {
               <div
                 className="cardSuccesCases"
                 onClick={() => {
-                  setActivate1(4);
+                  handleActive2(swiperSuccesCases, 4);
                 }}
                 onMouseEnter={handleMouseEnter4}
                 onMouseLeave={handleMouseLeave4}
@@ -318,7 +335,7 @@ function SuccesCasesPage() {
               <div
                 className="cardSuccesCases"
                 onClick={() => {
-                  setActivate1(5);
+                  handleActive2(swiperSuccesCases, 5);
                 }}
                 onMouseEnter={handleMouseEnter5}
                 onMouseLeave={handleMouseLeave5}
@@ -395,7 +412,7 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService2">
                   <h1>Derecho De Familia Y Matrimonial</h1>
                 </div>
-                <div className="containerListService">
+                <div className="containerListService listService2">
                   <ol>
                     <li>
                       <i className="fa-solid fa-circle-check"></i>
@@ -413,13 +430,10 @@ function SuccesCasesPage() {
                       <i className="fa-solid fa-circle-check"></i>
                       <h1>Liquidación de ganancias</h1>
                     </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Violencia doméstica</h1>
-                    </li>
+              
                   </ol>
                 </div>
-                <div className="containerListService">
+                <div className="containerListService listService2">
                   {" "}
                   <ol>
                     <li>
@@ -438,15 +452,23 @@ function SuccesCasesPage() {
                       <i className="fa-solid fa-circle-check"></i>
                       <h1>Mediación Familiar</h1>
                     </li>
+                  </ol>
+                </div>
+
+                <div className="containerListService listService2">
+                  {" "}
+                  <ol>
                     <li>
                       <i className="fa-solid fa-circle-check"></i>
                       <h1>Régimen de Visitas</h1>
                     </li>
+                    <li>
+                      <i className="fa-solid fa-circle-check"></i>
+                      <h1>Violencia doméstica</h1>
+                    </li>
                   </ol>
                 </div>
-                <div className="containersAllIcons">
-                  <i className="fa-solid fa-people-roof"></i>
-                </div>
+
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"
@@ -465,7 +487,7 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService3">
                   <h1>Derecho Laboral</h1>
                 </div>
-                <div className="containerListService">
+                <div className="containerListService listService3">
                   <ol>
                     <li>
                       <i className="fa-solid fa-circle-check"></i>
@@ -485,7 +507,7 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
-                <div className="containerListService">
+                <div className="containerListService listService3">
                   {" "}
                   <ol>
                     <li>
@@ -502,9 +524,7 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
-                <div className="containersAllIcons">
-                  <i className="fa-solid fa-briefcase"></i>{" "}
-                </div>
+         
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"
@@ -523,7 +543,7 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService4">
                   <h1>Derecho Inmobiliario</h1>
                 </div>
-                <div className="containerListService">
+                <div className="containerListService listService4">
                   <ol>
                     <li>
                       <i className="fa-solid fa-circle-check"></i>
@@ -539,9 +559,7 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
-                <div className="containersAllIcons">
-                  <i className="fa-solid fa-house-medical-circle-check"></i>{" "}
-                </div>
+           
 
                 <div
                   onClick={() => handleActive(containerInfoService)}
@@ -602,9 +620,7 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
-                <div className="containersAllIcons">
-                  <i className="fa-solid fa-handcuffs"></i>
-                </div>
+       
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"
