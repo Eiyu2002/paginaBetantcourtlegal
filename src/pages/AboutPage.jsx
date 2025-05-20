@@ -83,6 +83,78 @@ function AboutPage() {
         }
       );
     });
+
+    ctx.add("(max-width: 950px)", () => {
+      gsap.fromTo(
+        underlineAbout3.current,
+        { x: -550, innerText: 0 },
+        {
+          x: -30,
+          innerText: 70,
+          duration: 1,
+
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: img0.current, // Elemento que activa la animación
+            start: "top 80%", // Inicia cuando la parte superior del elemento llega al 80% de la pantalla
+            toggleActions: "play none none none", // Solo se ejecuta una vez
+          },
+          onUpdate: function () {
+            const roundedValue = parseInt(this.targets()[0].innerText);
+            setProgressValue(roundedValue);
+            this.targets()[0].innerText = roundedValue;
+          },
+        }
+      );
+    });
+
+    ctx.add("(max-width: 650px)", () => {
+      gsap.fromTo(
+        underlineAbout3.current,
+        { x: -400, innerText: 0 },
+        {
+          x: -10,
+          innerText: 70,
+          duration: 1,
+
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: img0.current, // Elemento que activa la animación
+            start: "top 80%", // Inicia cuando la parte superior del elemento llega al 80% de la pantalla
+            toggleActions: "play none none none", // Solo se ejecuta una vez
+          },
+          onUpdate: function () {
+            const roundedValue = parseInt(this.targets()[0].innerText);
+            setProgressValue(roundedValue);
+            this.targets()[0].innerText = roundedValue;
+          },
+        }
+      );
+    });
+
+      ctx.add("(max-width: 500px)", () => {
+      gsap.fromTo(
+        underlineAbout3.current,
+        { x: -200, innerText: 0 },
+        {
+          x: 35,
+          innerText: 70,
+          duration: 1,
+
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: img0.current, // Elemento que activa la animación
+            start: "top 80%", // Inicia cuando la parte superior del elemento llega al 80% de la pantalla
+            toggleActions: "play none none none", // Solo se ejecuta una vez
+          },
+          onUpdate: function () {
+            const roundedValue = parseInt(this.targets()[0].innerText);
+            setProgressValue(roundedValue);
+            this.targets()[0].innerText = roundedValue;
+          },
+        }
+      );
+    });
     ctx.add("(min-width: 1400px)", () => {
       gsap.fromTo(
         underlineAbout3.current,
@@ -106,8 +178,6 @@ function AboutPage() {
         }
       );
     });
-
-
   }, []);
 
   return (
@@ -173,7 +243,6 @@ function AboutPage() {
                     <i className="fa-solid fa-square-check"></i>Practical
                     Commercial Solution
                   </li>
-           
                 </ul>
               </div>
             </div>

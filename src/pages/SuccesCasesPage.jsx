@@ -1,4 +1,4 @@
-import { act, useRef, useState } from "react";
+import { act, useRef, useEffect } from "react";
 import "../assets/styleSuccesCasesPage.css";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useContext } from "react";
 import { UserContext } from "../context/Context";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 
 function SuccesCasesPage() {
   const elementSuccesCases1 = useRef(null);
@@ -26,7 +28,12 @@ function SuccesCasesPage() {
   const containerInfoService = useRef(null);
   const swiperSuccesCases = useRef(null);
 
-  const { activate1, setActivate1 } = useContext(UserContext);
+  const containerRef = useRef(null);
+  const animationRef = useRef(null);
+  const directionRef = useRef("down");
+  const isInterrupted = useRef(false);
+
+  const { activate1, setActivate1, windowWidth } = useContext(UserContext);
 
   const handleMouseEnter1 = () => {
     gsap.to(elementSuccesCases1.current, {
@@ -196,17 +203,83 @@ function SuccesCasesPage() {
   };
 
   useGSAP(() => {
-    gsap.fromTo(
-      containerInfoService.current,
-      { width: "0%", height: "0%" },
-      { width: "65%", height: "48%", duration: 1, ease: "power3.out" }
-    );
-    gsap.fromTo(
-      swiperSuccesCases.current,
-      { height: "0%" },
-      { height: "70%", duration: 1, ease: "power3.out" }
-    );
+    if (windowWidth > 950) {
+      gsap.fromTo(
+        containerInfoService.current,
+        { width: "0%", height: "0%" },
+        { width: "65%", height: "48%", duration: 1, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        swiperSuccesCases.current,
+        { height: "0%" },
+        { height: "70%", duration: 1, ease: "power3.out" }
+      );
+    } else {
+      gsap.fromTo(
+        containerInfoService.current,
+        { width: "0%", height: "0%" },
+        { width: "100%", height: "60%", duration: 1, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        swiperSuccesCases.current,
+        { height: "0%" },
+        { height: "70%", duration: 1, ease: "power3.out" }
+      );
+    }
   }, [activate1]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const scrollDown = () => {
+      animationRef.current = gsap.to(container, {
+        duration: 5,
+        scrollTop: container.scrollHeight,
+        ease: "power1.inOut",
+        onComplete: () => {
+          if (!isInterrupted.current) {
+            directionRef.current = "up";
+            scrollUp();
+          }
+        },
+      });
+    };
+
+    const scrollUp = () => {
+      animationRef.current = gsap.to(container, {
+        duration: 5,
+        scrollTop: 0,
+        ease: "power1.inOut",
+        onComplete: () => {
+          if (!isInterrupted.current) {
+            directionRef.current = "down";
+            scrollDown();
+          }
+        },
+      });
+    };
+
+    scrollDown();
+
+    const interrupt = () => {
+      isInterrupted.current = true;
+      if (animationRef.current) animationRef.current.kill();
+    };
+
+    // Detectar cualquier interacción del usuario dentro del contenedor
+    container.addEventListener("wheel", interrupt);
+    container.addEventListener("touchstart", interrupt);
+    container.addEventListener("mouseenter", interrupt); // Opcional
+    container.addEventListener("keydown", interrupt); // Si tiene focus
+
+    return () => {
+      container.removeEventListener("wheel", interrupt);
+      container.removeEventListener("touchstart", interrupt);
+      container.removeEventListener("mouseenter", interrupt);
+      container.removeEventListener("keydown", interrupt);
+    };
+  }, []);
 
   return (
     <div id="services" className="containerSuccesCasesPage">
@@ -224,7 +297,7 @@ function SuccesCasesPage() {
           <Swiper
             className="swiperSuccesCases"
             ref={swiperSuccesCases}
-            slidesPerView={3}
+            slidesPerView={windowWidth < 950 ? 1 : 3}
             centeredSlides={true}
             loop={true}
             autoplay={{
@@ -364,35 +437,68 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService">
                   <h1>Derecho Civil</h1>
                 </div>
-                <div className="containerListService">
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Reclamaciones de Deudas</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Accidentes de tráfico</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Indemnizaciones por daños</h1>
-                    </li>
-                  </ol>
-                </div>
-                <div className="containerListService">
-                  {" "}
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Incumplimientos contractuales</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Monitorios</h1>
-                    </li>
-                  </ol>
-                </div>
+                {windowWidth > 950 ? (
+                  <>
+                    {" "}
+                    <div className="containerListService">
+                      <ol ref={containerRef}>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Reclamaciones de Deudas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Accidentes de tráfico</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Indemnizaciones por daños</h1>
+                        </li>
+                      </ol>
+                    </div>
+                    <div className="containerListService">
+                      {" "}
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Incumplimientos contractuales</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Monitorios</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <div className="containerListService">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Reclamaciones de Deudas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Accidentes de tráfico</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Indemnizaciones por daños</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Incumplimientos contractuales</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Monitorios</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                )}
 
                 <div
                   onClick={() => handleActive(containerInfoService)}
@@ -412,62 +518,113 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService2">
                   <h1>Derecho De Familia Y Matrimonial</h1>
                 </div>
-                <div className="containerListService listService2">
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Divorcios Express</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Custodia Compartida</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Pensiones Alimentarias</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Liquidación de ganancias</h1>
-                    </li>
-              
-                  </ol>
-                </div>
-                <div className="containerListService listService2">
-                  {" "}
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Herencias y Testamentos</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Modificación de medidas</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Separaciones de Mutuo Acuerdo</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Mediación Familiar</h1>
-                    </li>
-                  </ol>
-                </div>
-
-                <div className="containerListService listService2">
-                  {" "}
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Régimen de Visitas</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Violencia doméstica</h1>
-                    </li>
-                  </ol>
-                </div>
+                {windowWidth > 950 ? (
+                  <>
+                    {" "}
+                    <div className="containerListService listService2">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Divorcios Express</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Custodia Compartida</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Pensiones Alimentarias</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Liquidación de ganancias</h1>
+                        </li>
+                      </ol>
+                    </div>
+                    <div className="containerListService listService2">
+                      {" "}
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Herencias y Testamentos</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Modificación de medidas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Separaciones de Mutuo Acuerdo</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Mediación Familiar</h1>
+                        </li>
+                      </ol>
+                    </div>
+                    <div className="containerListService listService2">
+                      {" "}
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Régimen de Visitas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Violencia doméstica</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <div className="containerListService">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Divorcios Express</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Custodia Compartida</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Pensiones Alimentarias</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Liquidación de ganancias</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Herencias y Testamentos</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Modificación de medidas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Separaciones de Mutuo Acuerdo</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Mediación Familiar</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Régimen de Visitas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Violencia doméstica</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                )}
 
                 <div
                   onClick={() => handleActive(containerInfoService)}
@@ -487,44 +644,86 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService3">
                   <h1>Derecho Laboral</h1>
                 </div>
-                <div className="containerListService listService3">
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Accidentes Laborales</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Impugnación de despidos</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Acoso Laboral</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Reclamaciones Salariales</h1>
-                    </li>
-                  </ol>
-                </div>
-                <div className="containerListService listService3">
-                  {" "}
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Incapacidades Laborales</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Régimen sancionador</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Implementación de planes y protocolos</h1>
-                    </li>
-                  </ol>
-                </div>
-         
+                {windowWidth > 950 ? (
+                  <>
+                    {" "}
+                    <div className="containerListService listService3">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Accidentes Laborales</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Impugnación de despidos</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Acoso Laboral</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Reclamaciones Salariales</h1>
+                        </li>
+                      </ol>
+                    </div>
+                    <div className="containerListService listService3">
+                      {" "}
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Incapacidades Laborales</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Régimen sancionador</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Implementación de planes y protocolos</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <div className="containerListService">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Accidentes Laborales</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Impugnación de despidos</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Acoso Laboral</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Reclamaciones Salariales</h1>
+                        </li>
+
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Incapacidades Laborales</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Régimen sancionador</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Implementación de planes y protocolos</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                )}
+
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"
@@ -543,6 +742,7 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService4">
                   <h1>Derecho Inmobiliario</h1>
                 </div>
+
                 <div className="containerListService listService4">
                   <ol>
                     <li>
@@ -559,7 +759,6 @@ function SuccesCasesPage() {
                     </li>
                   </ol>
                 </div>
-           
 
                 <div
                   onClick={() => handleActive(containerInfoService)}
@@ -579,48 +778,93 @@ function SuccesCasesPage() {
                 <div className="containerTitleInfoService5">
                   <h1>Derecho Penal</h1>
                 </div>
-                <div className="containerListService">
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Alcoholemias</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Lesiones</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Violencia de género</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Estafas y Fraudes</h1>
-                    </li>
-                  </ol>
-                </div>
-                <div className="containerListService">
-                  {" "}
-                  <ol>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Robos y Hurtos</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Asistencia en detenciones</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Tráfico de drogas</h1>
-                    </li>
-                    <li>
-                      <i className="fa-solid fa-circle-check"></i>
-                      <h1>Jugos Rápidos</h1>
-                    </li>
-                  </ol>
-                </div>
-       
+                {windowWidth > 950 ? (
+                  <>
+                    {" "}
+                    <div className="containerListService">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Alcoholemias</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Lesiones</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Violencia de género</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Estafas y Fraudes</h1>
+                        </li>
+                      </ol>
+                    </div>
+                    <div className="containerListService">
+                      {" "}
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Robos y Hurtos</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Asistencia en detenciones</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Tráfico de drogas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Jugos Rápidos</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <div className="containerListService">
+                      <ol>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Alcoholemias</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Lesiones</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Violencia de género</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Estafas y Fraudes</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Robos y Hurtos</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Asistencia en detenciones</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Tráfico de drogas</h1>
+                        </li>
+                        <li>
+                          <i className="fa-solid fa-circle-check"></i>
+                          <h1>Jugos Rápidos</h1>
+                        </li>
+                      </ol>
+                    </div>
+                  </>
+                )}
+
                 <div
                   onClick={() => handleActive(containerInfoService)}
                   className="toBackService"

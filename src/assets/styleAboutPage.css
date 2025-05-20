@@ -271,16 +271,188 @@
   .containerTextAbout3 {
     margin-top: 6em;
   }
-  .textAbout3{
+  .textAbout3 {
     margin-top: 1em;
     font-size: 1.2em;
   }
-  .containerListAbout{
+  .containerListAbout {
     justify-content: center;
     font-size: 1.3em;
   }
-  .underlineAbout3{
+  .underlineAbout3 {
     right: 11em;
   }
+}
 
+@media (max-width: 950px) {
+  .containerAboutPage {
+    width: 100vw;
+    height: 250vh;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .containerSection {
+    width: 100%;
+    margin-top: 4%;
+    height: 90%;
+    display: flex;
+    gap: 5%;
+
+    flex-direction: column-reverse;
+  }
+
+  .containerTextAbout {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    margin-top: 0em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textAbout2 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-black);
+    margin-top: 2%;
+    margin-left: 1%;
+    width: 90%;
+    width: 100%;
+    font-size: 2.2em;
+    font-weight: 700;
+    position: relative;
+  }
+  .textAbout1 {
+    font-family: "Montserrat", sans-serif;
+    margin-left: 3%;
+    color: var(--color-orange);
+    font-size: 1.4em;
+    position: relative;
+  }
+  .textAbout3 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--color-black);
+    text-align: left;
+    width: 95%;
+    margin-top: 2%;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-left: 2%;
+  }
+  .containerTextAbout3 {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+  }
+  .underlineAbout1 {
+    width: 90%;
+    border-bottom: solid 0.5em var(--color-black);
+    top: 15%;
+    left: 2%;
+    position: relative;
+  }
+  .containerSpeechBubble {
+    height: 100%;
+    width: 90%;
+  }
+
+  .speechBubble {
+    position: relative;
+    background: var(--color-orange); /* Color mostaza */
+    color: white;
+    padding: 15px 20px;
+    height: 40%;
+    margin-top: 1em;
+    margin-left: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-style: italic;
+    width: 90%;
+    max-width: 300px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    font-family: "Montserrat", sans-serif;
+  }
+  .img5 {
+    background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/signature.png");
+    background-repeat: no-repeat;
+    margin-left: 1em;
+    background-size: contain;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0em;
+    top: -0.5em;
+  }
+
+  .textAbout4 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    width: 70%;
+    text-align: end;
+  }
+  .containerImgs {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .containerListAbout {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    margin-left: 5%;
+    font-weight: normal;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .img1 {
+    background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/about.jpg");
+    width: 90%;
+    height: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 7em;
+    left: 1em;
+  }
+
+  .img2 {
+    background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/about-1.jpg");
+    width: 75%;
+    height: 32%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: solid 0.6em var(--color-white);
+    position: absolute;
+    bottom: -2em;
+    right: 1em;
+  }
+  .img0 {
+    background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/pattern-2.png");
+    width: 60%;
+    height: 55%;
+    position: absolute;
+    top: 6em;
+    left: 0em;
+  }
+
+  .img3 {
+    background-image: url("https://betancourtlegal.es/wp-content/uploads/2021/06/law.png");
+    width: 60%;
+    height: 50%;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    bottom: -20%;
+    left: 10%;
+  }
 }
