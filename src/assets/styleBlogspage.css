@@ -2,11 +2,14 @@
   width: 100vw;
   height: 100vh;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .blogCardContainer {
   display: flex;
-
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -34,11 +37,11 @@
   display: flex;
   border-radius: 10px 10px 10px 10px;
 }
-.blogCard:hover > .blogCardContent > h3{
+.blogCard:hover > .blogCardContent > h3 {
   color: var(--color-orange);
 }
 
-.blogCard:hover > .blogCardImage{
+.blogCard:hover > .blogCardImage {
   transform: scale(1.06);
 }
 
@@ -57,14 +60,11 @@
   transition: all 0.2s;
 }
 
-
-
 .blogCardContent > p {
   color: var(--color-black);
   font-size: 1em;
   margin: 0;
- 
-  
+
   text-align: start;
   display: -webkit-box;
   -webkit-line-clamp: 4; /* Número máximo de líneas */
@@ -78,19 +78,79 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
-.swiperBlogs{
+.swiperBlogs {
   height: 90%;
   display: flex;
   align-items: center;
- 
 }
 
-.slideCard{
+.slideCard {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.titleBlogs {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2em;
+  position: relative;
+  color: var(--color-orange);
 
+  margin-top: 5%;
+}
+
+.titleBlogs::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.1em;
+  border-bottom: 0.1em solid var(--color-orange);
+  bottom: 45%;
+  left: 105%;
+}
+.titleBlogs::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 1.5em;
+  border-bottom: 0.1em solid var(--color-black);
+  bottom: 26%;
+  left: 105%;
+}
+
+@media (max-width: 950px) {
+  .blogCard {
+    width: 88%;
+    height: 50%;
+  }
+  .swiper-button-prev {
+    color: var(--color-orange);
+    left: -0.5em;
+    z-index: 100;
+  }
+
+  .swiper-button-next {
+    color: var(--color-orange);
+    right: -0.5em;
+
+    z-index: 100;
+  }
+  .swiperBlogs {
+    height: 90%;
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+  }
+  .titleBlogs {
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2em;
+    position: relative;
+    color: var(--color-orange);
+
+    margin-top: 20%;
+  }
 }

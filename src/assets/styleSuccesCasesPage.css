@@ -548,7 +548,11 @@
     height: 48%;
   }
 
-  .containerTitleInfoService, .containerTitleInfoService2, .containerTitleInfoService3, .containerTitleInfoService4, .containerTitleInfoService5 {
+  .containerTitleInfoService,
+  .containerTitleInfoService2,
+  .containerTitleInfoService3,
+  .containerTitleInfoService4,
+  .containerTitleInfoService5 {
     width: 100%;
     height: 19%;
     left: 0;
@@ -572,18 +576,18 @@
   }
 
   .containerListService {
-    
-    font-size: 0.9em;
-  
+    font-size: 1.1em;
+    width: 80%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     overflow: hidden;
   }
-  .containerListService > ol{
+  .containerListService > ol {
     overflow-y: auto;
-    width: 90%;
+    overflow-x: hidden;
+    width: 100%;
     height: 10em;
-  };
+  }
 
   .containerListService > ol > li > h1 {
     font-family: "Montserrat", sans-serif;

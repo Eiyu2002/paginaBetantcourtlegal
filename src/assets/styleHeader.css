@@ -39,8 +39,8 @@
   position: relative;
 }
 
-.navPc > ul > li > a:hover, .navPc > ul > li >
-span:hover {
+.navPc > ul > li > a:hover,
+.navPc > ul > li > span:hover {
   background-color: var(--color-orange);
 }
 
@@ -125,27 +125,35 @@ span:hover {
 }
 
 @media (max-width: 950px) {
+  .sideNav{
+    background-color: transparent!important;
+  }
   .containerNavMobile {
-    width: 45vw;
+    width: 100vw;
     height: 100vh;
     position: absolute;
     z-index: -1;
-    background-color: var(--color-black);
+    display: flex;
+    background-color: transparent!important;
     top: 0;
     left: -50%;
     transition: all 0.5s;
   }
-  .liCloseIcon{
+  .liCloseIcon {
     display: flex;
     align-items: center;
   }
-  .closeIcon{
+  .closeIcon {
     font-size: 2em;
     color: var(--color-orange);
     margin-left: 10%;
   }
   .containerNavMobile > nav {
     height: 100%;
+    background-color: var(--color-black);
+    width: 50%;
+    
+
   }
   .containerNavMobile > nav > ul {
     height: 100%;
@@ -178,10 +186,9 @@ span:hover {
     align-items: center;
     cursor: pointer;
     position: relative;
+ 
     padding: 0;
   }
-
-
 
   .dropdownMobile {
     border-top: 0.5em solid var(--color-orange);
@@ -212,14 +219,14 @@ span:hover {
     box-shadow: -2px 4px 5px -1px rgba(0, 0, 0, 0.09);
     text-indent: 1em;
   }
-  .openMenuIcon{
+  .openMenuIcon {
     color: var(--color-white);
     margin-left: 5%;
   }
   .dropdownMobile > ul > li > a {
     transition: text-indent 0.5s;
   }
-  .containerIconsHeader{
+  .containerIconsHeader {
     margin-right: 1em;
   }
 }

@@ -18,13 +18,12 @@
 }
 
 .blogCardImageDetails {
-  width: 100%!important;
-  height: 70%!important;
-  max-height: 400px!important;
-  object-fit: cover!important;
-  border-radius: 10px 10px 0 0!important;
+  width: 100% !important;
+  height: 70% !important;
+  max-height: 400px !important;
+  object-fit: cover !important;
+  border-radius: 10px 10px 0 0 !important;
 }
-
 
 .blogDetail > h1 {
   font-family: "Montserrat", sans-serif;
@@ -33,33 +32,33 @@
   height: 1.5em;
   border-bottom: 0.1em solid var(--color-orange);
   position: relative;
-
 }
 
-.blogDetail > h1::after{
+.blogDetail > h1::after {
   content: "";
   position: absolute;
   bottom: -0.3em;
   right: 0;
   width: 100%;
-  
+
   border-bottom: solid 0.1em var(--color-black);
 }
 
-.blogContent{
+.blogContent {
   width: 100%;
   margin-top: 5em;
 }
 
-.blogContent > p{
+.blogContent > p {
   text-align: left;
   margin-top: 1em;
+  margin-bottom: 10%;
   width: 80%;
   font-family: "Montserrat", sans-serif;
   color: var(--color-black);
 }
 
-.blogContent > ul{
+.blogContent > ul {
   margin-top: 1em;
   margin-left: 1em;
   width: 80%;
@@ -67,24 +66,53 @@
   color: var(--color-black);
 }
 
-.blogContent > ul > li{
+.blogContent > ul > li {
   list-style-type: disc;
   margin-bottom: 0.5em;
 }
 
-
-
-
-
-#blogDetailsContainer img{
+#blogDetailsContainer img {
   margin-top: 2em;
   margin-left: 2em;
   width: 70%;
   height: 70%;
-  border-radius: 10px!important;
-
-  
+  border-radius: 10px !important;
 }
 
+@media (max-width: 950px) {
+  .blogDetail {
+    width: 90%;
+    overflow: visible;
+  }
+
+  .blogDetail > h1 {
+    font-size: 0.9em;
+    text-align: center;
+    border: 0px;
+  }
+  .blogContent {
+    margin-top: 10%;
+  }
 
 
+
+  .blogDetail > h1::after {
+    content: "";
+    position: absolute;
+    bottom: -110%;
+    right: 0;
+    width: 100%;
+
+    border-bottom: solid 0.2em var(--color-black);
+  }
+  
+  .blogDetail > h1::before {
+    content: "";
+    position: absolute;
+    bottom: -90%;
+    right: 0;
+    width: 100%;
+
+    border-bottom: solid 0.2em var(--color-orange);
+  }
+}

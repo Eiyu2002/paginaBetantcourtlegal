@@ -68,7 +68,6 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
- 
 
   const [drop, setDrop] = useState(false);
 
@@ -76,25 +75,34 @@ function Header() {
     setDrop(!drop);
   };
 
-
-
   return (
     <>
       <header className="header">
         {windowWidth < 950 && (
           <>
-            <i onClick={()=> setMenuSide(!menuSide)} className="openMenuIcon fa-solid fa-bars"></i>
-            <div className="containerNavMobile" style={menuSide ? { left: "0" } : { left: "-50%" }}>
+            <i
+              onClick={() => setMenuSide(!menuSide)}
+              className="openMenuIcon fa-solid fa-bars"
+            ></i>
+            <div
+              className="containerNavMobile"
+              style={menuSide ? { left: "0" } : { left: "-100%" }}
+            >
               <nav className="navMobile">
                 <ul>
-                  <li className="liCloseIcon" onClick={()=> setMenuSide(!menuSide)} >
-                   
-                  </li>
+                  <li
+                    className="liCloseIcon"
+                    onClick={() => setMenuSide(!menuSide)}
+                  ></li>
                   <li>
                     <Link
                       to={"/"}
                       onClick={() => {
+                        setBgColor5(""), setBgColor2("");
+                        setBgColor3("");
+                        setBgColor4("");
                         setBgColor("#cc8809");
+                        handleScrollToCases("");
                         window.scrollTo({ top: 0 });
                       }}
                       style={{ backgroundColor: bgColor }}
@@ -135,7 +143,10 @@ function Header() {
                                     ? { color: "#cc8809", textIndent: "1.5em" }
                                     : { color: "#222222" }
                                 }
-                                onClick={() => setActivate1(3)}
+                                onClick={() => {
+                                  setActivate1(3);
+                                  handleScrollToCases("services");
+                                }}
                                 to={"services"}
                               >
                                 Derecho Laboral
@@ -149,7 +160,10 @@ function Header() {
                                     ? { color: "#cc8809", textIndent: "1.5em" }
                                     : { color: "#222222" }
                                 }
-                                onClick={() => setActivate1(2)}
+                                onClick={() => {
+                                  setActivate1(2);
+                                  handleScrollToCases("services");
+                                }}
                                 to={"services"}
                               >
                                 Derecho De Familia Y Matrimonial
@@ -163,7 +177,10 @@ function Header() {
                                     ? { color: "#cc8809", textIndent: "1.5em" }
                                     : { color: "#222222" }
                                 }
-                                onClick={() => setActivate1(5)}
+                                onClick={() => {
+                                  setActivate1(5);
+                                  handleScrollToCases("services");
+                                }}
                                 to={"services"}
                               >
                                 Derecho Penal
@@ -177,7 +194,10 @@ function Header() {
                                     ? { color: "#cc8809", textIndent: "1.5em" }
                                     : { color: "#222222" }
                                 }
-                                onClick={() => setActivate1(4)}
+                                onClick={() => {
+                                  setActivate1(4);
+                                  handleScrollToCases("services");
+                                }}
                                 to={"services"}
                               >
                                 Derecho Inmobiliario
@@ -191,7 +211,10 @@ function Header() {
                                     ? { color: "#cc8809", textIndent: "1.5em" }
                                     : { color: "#222222" }
                                 }
-                                onClick={() => setActivate1(1)}
+                                onClick={() => {
+                                  setActivate1(1);
+                                  handleScrollToCases("services");
+                                }}
                                 to={"services"}
                               >
                                 Derecho Civil
@@ -238,6 +261,11 @@ function Header() {
                   </li>
                 </ul>
               </nav>
+              <div
+                onClick={() => setMenuSide(!menuSide)}
+                className="sideNav"
+                style={{ height: "100%", width: "50%", backgroundColor:"transparent" }}
+              ></div>
             </div>
           </>
         )}
@@ -282,31 +310,56 @@ function Header() {
                     <ul>
                       <li>
                         {" "}
-                        <Link onClick={() => setActivate1(3)} to={"services"}>
+                        <Link
+                          onClick={() => {
+                            setActivate1(3);
+                            handleScrollToCases("services");
+                          }}
+                        >
                           Derecho Laboral
                         </Link>
                       </li>
                       <li>
                         {" "}
-                        <Link onClick={() => setActivate1(2)} to={"services"}>
+                        <Link
+                          onClick={() => {
+                            setActivate1(2);
+                            handleScrollToCases("services");
+                          }}
+                        >
                           Derecho De Familia Y Matrimonial
                         </Link>
                       </li>
                       <li>
                         {" "}
-                        <Link onClick={() => setActivate1(5)} to={"services"}>
+                        <Link
+                          onClick={() => {
+                            setActivate1(5);
+                            handleScrollToCases("services");
+                          }}
+                        >
                           Derecho Penal
                         </Link>
                       </li>
                       <li>
                         {" "}
-                        <Link onClick={() => setActivate1(4)} to={"services"}>
+                        <Link
+                          onClick={() => {
+                            setActivate1(4);
+                            handleScrollToCases("services");
+                          }}
+                        >
                           Derecho Inmobiliario
                         </Link>
                       </li>
                       <li>
                         {" "}
-                        <Link onClick={() => setActivate1(1)} to={"services"}>
+                        <Link
+                          onClick={() => {
+                            setActivate1(1);
+                            handleScrollToCases("services");
+                          }}
+                        >
                           Derecho Civil
                         </Link>
                       </li>
